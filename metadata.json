@@ -1,0 +1,7 @@
+{
+  "name": "SmartDoc.ma Investor Deck",
+  "description": "Interactive Pitch Deck for SmartDoc.ma featuring live Gemini AI image editing capabilities.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
