@@ -21,7 +21,7 @@ const SlideContainer = ({ children, isActive, darkBg = false }: React.PropsWithC
         transition={{ duration: 0.6, ease: "easeOut" }}
         className={`absolute inset-0 w-full h-full flex flex-col ${darkBg ? 'bg-gradient-to-br from-slate-900 via-slate-800 to-smart-900' : 'bg-gradient-to-br from-white via-slate-50 to-smart-50/30'}`}
       >
-        <div className="relative z-10 w-full h-full flex flex-col p-6 sm:p-8 md:p-12 lg:p-16 overflow-y-auto">
+        <div className="relative z-10 w-full h-full flex flex-col p-4 sm:p-6 md:p-8 lg:p-10 overflow-hidden pb-24">
           {children}
         </div>
         {!darkBg && (
@@ -40,14 +40,14 @@ const SectionTitle = ({ children, subtitle, white = false }: { children?: React.
     initial={{ opacity: 0, x: -20 }}
     animate={{ opacity: 1, x: 0 }}
     transition={{ duration: 0.5 }}
-    className="mb-8 md:mb-12"
+    className="mb-4 md:mb-6 flex-shrink-0"
   >
     {subtitle && (
-      <span className={`inline-block px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase mb-4 ${white ? 'bg-white/10 text-white/80' : 'bg-smart-50 text-smart-700 border border-smart-200'}`}>
+      <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase mb-2 ${white ? 'bg-white/10 text-white/80' : 'bg-smart-50 text-smart-700 border border-smart-200'}`}>
         {subtitle}
       </span>
     )}
-    <h2 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight ${white ? 'text-white' : 'text-slate-900'}`}>
+    <h2 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight ${white ? 'text-white' : 'text-slate-900'}`}>
       {children}
     </h2>
   </motion.div>
@@ -58,7 +58,7 @@ const Card = ({ title, children, icon: Icon, highlight = false, index = 0 }: { t
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.5, delay: index * 0.1 }}
-    className={`group relative p-6 md:p-8 rounded-2xl border-2 transition-all duration-300 h-full flex flex-col overflow-hidden ${
+    className={`group relative p-4 md:p-6 rounded-2xl border-2 transition-all duration-300 h-full flex flex-col overflow-hidden ${
       highlight
         ? 'bg-gradient-to-br from-smart-600 to-smart-700 text-white border-smart-500 shadow-2xl shadow-smart-600/30 hover:shadow-smart-600/50'
         : 'bg-white/80 backdrop-blur-sm border-slate-200 hover:border-smart-300 hover:shadow-xl'
@@ -66,19 +66,19 @@ const Card = ({ title, children, icon: Icon, highlight = false, index = 0 }: { t
   >
     {!highlight && <div className="absolute inset-0 bg-gradient-to-br from-smart-50/0 to-smart-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />}
     <div className="relative z-10 flex flex-col h-full">
-      <div className="flex items-start gap-4 mb-4">
+      <div className="flex items-start gap-3 mb-3">
         {Icon && (
-          <div className={`p-3 rounded-xl transition-transform duration-300 group-hover:scale-110 ${
+          <div className={`p-2 rounded-xl transition-transform duration-300 group-hover:scale-110 ${
             highlight ? 'bg-white/20 text-white' : 'bg-smart-100 text-smart-600'
           }`}>
-            <Icon size={24} />
+            <Icon size={20} />
           </div>
         )}
-        <h3 className={`text-lg md:text-xl font-bold flex-1 ${highlight ? 'text-white' : 'text-slate-900'}`}>
+        <h3 className={`text-base md:text-lg font-bold flex-1 ${highlight ? 'text-white' : 'text-slate-900'}`}>
           {title}
         </h3>
       </div>
-      <div className={`text-sm md:text-base leading-relaxed flex-1 ${highlight ? 'text-white/90' : 'text-slate-600'}`}>
+      <div className={`text-xs md:text-sm leading-relaxed flex-1 ${highlight ? 'text-white/90' : 'text-slate-600'}`}>
         {children}
       </div>
     </div>
@@ -196,7 +196,7 @@ function App() {
         <SlideContainer isActive={currentSlide === 1}>
           <SectionTitle subtitle="La Vision Augmentée">Executive Summary</SectionTitle>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 flex-1">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 flex-1">
             <Card title="Le Contexte - L'Urgence" icon={Globe} index={0}>
               La médecine mondiale vit sa plus grande mutation depuis l'informatique : l'avènement de l'Intelligence Artificielle. Le médecin de 2026 ne peut plus se contenter d'être un "archiviste" qui saisit des données dans des logiciels desktop déconnectés et obsolètes.
             </Card>
@@ -220,11 +220,11 @@ function App() {
           <SectionTitle subtitle="La Réalité du Médecin-Entrepreneur" white={true}>
             Le Problème
           </SectionTitle>
-          <p className="text-xl md:text-2xl text-white/80 mb-8 md:mb-12">
+          <p className="text-lg md:text-xl text-white/80 mb-4 md:mb-6 flex-shrink-0">
             Le médecin marocain moderne fait face à une <span className="font-bold text-smart-400">triple fracture</span> :
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 flex-1">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 flex-1">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -286,11 +286,11 @@ function App() {
           <SectionTitle subtitle="Le Socle Business">
             Pilier 1 : L'Administration & La Gestion
           </SectionTitle>
-          <p className="text-slate-600 mb-8 md:mb-12 text-lg md:text-xl font-medium">
+          <p className="text-slate-600 mb-4 md:mb-6 text-base md:text-lg font-medium flex-shrink-0">
             C'est ce qui fait tourner le cabinet au quotidien.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 flex-1">
             <Card title="Gestion Avancée des RDV" icon={Calendar} index={0}>
               Agenda multi-vues, gestion des urgences, listes d'attente intelligentes.
             </Card>
@@ -322,24 +322,24 @@ function App() {
           <SectionTitle subtitle="Le Cœur Médical">
             Pilier 2 : La Rigueur Clinique
           </SectionTitle>
-          <p className="text-slate-600 mb-8 md:mb-12 text-lg md:text-xl font-medium">
+          <p className="text-slate-600 mb-4 md:mb-6 text-base md:text-lg font-medium flex-shrink-0">
             C'est ce qui sécurise la pratique du médecin.
           </p>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 flex-1">
-            <div className="space-y-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 flex-1">
+            <div className="space-y-3 md:space-y-4">
               <motion.div
                 initial={{ x: -20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.1 }}
-                className="flex gap-4 p-6 bg-white rounded-2xl border-2 border-slate-200 hover:border-smart-300 transition-all shadow-lg hover:shadow-xl"
+                className="flex gap-3 p-4 md:p-5 bg-white rounded-xl border-2 border-slate-200 hover:border-smart-300 transition-all shadow-lg hover:shadow-xl"
               >
-                <div className="bg-smart-100 p-3 rounded-xl text-smart-600 h-fit">
-                  <FileText size={28} />
+                <div className="bg-smart-100 p-2 rounded-lg text-smart-600 h-fit">
+                  <FileText size={20} />
                 </div>
                 <div>
-                  <h3 className="font-bold text-slate-900 text-lg mb-2">Dossier Patient Structuré (Standard SOAP)</h3>
-                  <p className="text-sm md:text-base text-slate-600">
+                  <h3 className="font-bold text-slate-900 text-sm md:text-base mb-1">Dossier Patient Structuré (Standard SOAP)</h3>
+                  <p className="text-xs md:text-sm text-slate-600">
                     Organisation native des données en Subjectif, Objectif, Analyse, Plan. Permet une traçabilité parfaite.
                   </p>
                 </div>
@@ -349,14 +349,14 @@ function App() {
                 initial={{ x: -20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.2 }}
-                className="flex gap-4 p-6 bg-white rounded-2xl border-2 border-slate-200 hover:border-smart-300 transition-all shadow-lg hover:shadow-xl"
+                className="flex gap-3 p-4 md:p-5 bg-white rounded-xl border-2 border-slate-200 hover:border-smart-300 transition-all shadow-lg hover:shadow-xl"
               >
-                <div className="bg-smart-100 p-3 rounded-xl text-smart-600 h-fit">
-                  <Database size={28} />
+                <div className="bg-smart-100 p-2 rounded-lg text-smart-600 h-fit">
+                  <Database size={20} />
                 </div>
                 <div>
-                  <h3 className="font-bold text-slate-900 text-lg mb-2">Base Médicale Internationale (CIM-10)</h3>
-                  <p className="text-sm md:text-base text-slate-600">
+                  <h3 className="font-bold text-slate-900 text-sm md:text-base mb-1">Base Médicale Internationale (CIM-10)</h3>
+                  <p className="text-xs md:text-sm text-slate-600">
                     Codification automatique des diagnostics pour un suivi épidémiologique et statistique précis.
                   </p>
                 </div>
@@ -366,14 +366,14 @@ function App() {
                 initial={{ x: -20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.3 }}
-                className="flex gap-4 p-6 bg-white rounded-2xl border-2 border-slate-200 hover:border-smart-300 transition-all shadow-lg hover:shadow-xl"
+                className="flex gap-3 p-4 md:p-5 bg-white rounded-xl border-2 border-slate-200 hover:border-smart-300 transition-all shadow-lg hover:shadow-xl"
               >
-                <div className="bg-smart-100 p-3 rounded-xl text-smart-600 h-fit">
-                  <Stethoscope size={28} />
+                <div className="bg-smart-100 p-2 rounded-lg text-smart-600 h-fit">
+                  <Stethoscope size={20} />
                 </div>
                 <div>
-                  <h3 className="font-bold text-slate-900 text-lg mb-2">Spécialisation Métier</h3>
-                  <p className="text-sm md:text-base text-slate-600">
+                  <h3 className="font-bold text-slate-900 text-sm md:text-base mb-1">Spécialisation Métier</h3>
+                  <p className="text-xs md:text-sm text-slate-600">
                     Modules dédiés par spécialité (Roue Obstétricale Gynéco, Courbes OMS Pédiatrie, Schémas Cardio/Ophtalmo) intégrés nativement.
                   </p>
                 </div>
@@ -384,18 +384,18 @@ function App() {
               initial={{ x: 20, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 0.4 }}
-              className="relative bg-gradient-to-br from-smart-500 to-smart-700 rounded-3xl p-8 overflow-hidden shadow-2xl"
+              className="relative bg-gradient-to-br from-smart-500 to-smart-700 rounded-2xl p-5 md:p-6 overflow-hidden shadow-2xl"
             >
-              <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
+              <div className="absolute top-0 right-0 w-48 h-48 bg-white/10 rounded-full blur-3xl" />
               <div className="relative z-10">
-                <div className="flex items-center gap-4 mb-8">
-                  <div className="bg-white/20 p-3 rounded-xl">
-                    <HeartPulse className="text-white" size={36} />
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="bg-white/20 p-2 rounded-lg">
+                    <HeartPulse className="text-white" size={24} />
                   </div>
-                  <h3 className="text-2xl font-bold text-white">Prescription Sécurisée</h3>
+                  <h3 className="text-lg md:text-xl font-bold text-white">Prescription Sécurisée</h3>
                 </div>
-                <p className="text-white/90 mb-6 text-sm md:text-base">DCI & Vidal-like</p>
-                <ul className="space-y-4">
+                <p className="text-white/90 mb-4 text-xs md:text-sm">DCI & Vidal-like</p>
+                <ul className="space-y-2 md:space-y-3">
                   {[
                     'Base de données exhaustive des médicaments (Maroc)',
                     'Prescription par Nom Commercial ou DCI',
@@ -424,24 +424,24 @@ function App() {
           <SectionTitle subtitle="La Spécificité Maroc" white={true}>
             Pilier 3 : L'Automatisation Administrative
           </SectionTitle>
-          <p className="text-xl md:text-2xl text-white/80 mb-12 md:mb-16">
+          <p className="text-lg md:text-xl text-white/80 mb-4 md:mb-6 flex-shrink-0">
             C'est ce qui fait gagner du temps à l'assistante et fidélise le patient.
           </p>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 items-center flex-1">
+            <div className="space-y-4 md:space-y-6">
               <motion.div
                 initial={{ x: -30, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.2 }}
-                className="flex items-start gap-6 bg-white/10 backdrop-blur-md p-6 md:p-8 rounded-2xl border border-white/20"
+                className="flex items-start gap-4 bg-white/10 backdrop-blur-md p-4 md:p-6 rounded-xl border border-white/20"
               >
-                <div className="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-smart-400 to-teal-500 rounded-2xl flex items-center justify-center text-white flex-shrink-0 shadow-xl">
-                  <FileText size={36} />
+                <div className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-smart-400 to-teal-500 rounded-xl flex items-center justify-center text-white flex-shrink-0 shadow-xl">
+                  <FileText size={24} />
                 </div>
                 <div>
-                  <h3 className="text-xl md:text-2xl font-bold text-white mb-3">Générateur de Feuilles de Soins</h3>
-                  <p className="text-slate-300 text-sm md:text-base leading-relaxed">
+                  <h3 className="text-base md:text-xl font-bold text-white mb-2">Générateur de Feuilles de Soins</h3>
+                  <p className="text-slate-300 text-xs md:text-sm leading-relaxed">
                     Remplissage et impression automatique des formulaires officiels (CNOPS, CNSS, AXA, Assurances Privées) directement depuis la consultation.
                   </p>
                 </div>
@@ -451,14 +451,14 @@ function App() {
                 initial={{ x: -30, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.4 }}
-                className="flex items-start gap-6 bg-white/10 backdrop-blur-md p-6 md:p-8 rounded-2xl border border-white/20"
+                className="flex items-start gap-4 bg-white/10 backdrop-blur-md p-4 md:p-6 rounded-xl border border-white/20"
               >
-                <div className="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-smart-400 to-teal-500 rounded-2xl flex items-center justify-center text-white flex-shrink-0 shadow-xl">
-                  <CheckCircle size={36} />
+                <div className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-smart-400 to-teal-500 rounded-xl flex items-center justify-center text-white flex-shrink-0 shadow-xl">
+                  <CheckCircle size={24} />
                 </div>
                 <div>
-                  <h3 className="text-xl md:text-2xl font-bold text-white mb-3">Certificats & Courriers</h3>
-                  <p className="text-slate-300 text-sm md:text-base leading-relaxed">
+                  <h3 className="text-base md:text-xl font-bold text-white mb-2">Certificats & Courriers</h3>
+                  <p className="text-slate-300 text-xs md:text-sm leading-relaxed">
                     Bibliothèque de modèles (Aptitude, Repos, Orientation) générés en 1 clic avec les données du patient.
                   </p>
                 </div>
@@ -501,11 +501,11 @@ function App() {
           <SectionTitle subtitle="Le Game Changer">
             Pilier 4 : L'Intelligence SmartDoc
           </SectionTitle>
-          <p className="text-slate-600 mb-8 md:mb-12 text-lg md:text-xl font-medium">
+          <p className="text-slate-600 mb-4 md:mb-6 text-base md:text-lg font-medium flex-shrink-0">
             C'est ce qui différencie SmartDoc de <span className="font-bold text-smart-600">tout ce qui existe</span>.
           </p>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 flex-1">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6 flex-1">
             <motion.div
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -570,11 +570,11 @@ function App() {
           <SectionTitle subtitle="Architecture Robuste" white={true}>
             La Technologie & Sécurité
           </SectionTitle>
-          <p className="text-2xl md:text-3xl text-white mb-12 md:mb-16 font-light">
+          <p className="text-xl md:text-2xl text-white mb-4 md:mb-6 font-light flex-shrink-0">
             Nous vendons de la <span className="font-bold text-smart-400">confiance</span>.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 flex-1">
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
@@ -658,32 +658,32 @@ function App() {
         <SlideContainer isActive={currentSlide === 8}>
           <SectionTitle subtitle="Secteur Privé">Le Marché & La Cible</SectionTitle>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 flex-1 items-center">
-            <div className="space-y-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 flex-1 items-center">
+            <div className="space-y-4">
               <motion.div
                 initial={{ x: -20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.1 }}
-                className="bg-gradient-to-br from-smart-500 to-teal-600 p-8 rounded-3xl text-white shadow-2xl"
+                className="bg-gradient-to-br from-smart-500 to-teal-600 p-5 md:p-6 rounded-2xl text-white shadow-2xl"
               >
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="bg-white/20 p-3 rounded-xl">
-                    <LineChart className="text-white" size={32} />
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="bg-white/20 p-2 rounded-lg">
+                    <LineChart className="text-white" size={24} />
                   </div>
-                  <h3 className="text-2xl font-bold">Total Addressable Market</h3>
+                  <h3 className="text-lg md:text-xl font-bold">Total Addressable Market</h3>
                 </div>
-                <p className="text-4xl font-bold mb-2">~28,000</p>
-                <p className="text-white/90 text-lg">
+                <p className="text-3xl font-bold mb-1">~28,000</p>
+                <p className="text-white/90 text-sm md:text-base">
                   Médecins au Maroc (Secteur Privé)
                 </p>
-                <div className="mt-6 pt-6 border-t border-white/20 grid grid-cols-2 gap-4">
+                <div className="mt-4 pt-4 border-t border-white/20 grid grid-cols-2 gap-3">
                   <div>
-                    <p className="text-3xl font-bold">12K</p>
-                    <p className="text-white/80 text-sm">Généralistes</p>
+                    <p className="text-2xl font-bold">12K</p>
+                    <p className="text-white/80 text-xs">Généralistes</p>
                   </div>
                   <div>
-                    <p className="text-3xl font-bold">16K</p>
-                    <p className="text-white/80 text-sm">Spécialistes</p>
+                    <p className="text-2xl font-bold">16K</p>
+                    <p className="text-white/80 text-xs">Spécialistes</p>
                   </div>
                 </div>
               </motion.div>
@@ -692,15 +692,15 @@ function App() {
                 initial={{ x: -20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.2 }}
-                className="bg-white p-8 rounded-3xl border-2 border-slate-200 shadow-lg"
+                className="bg-white p-5 md:p-6 rounded-2xl border-2 border-slate-200 shadow-lg"
               >
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="bg-smart-100 p-3 rounded-xl">
-                    <Target className="text-smart-600" size={28} />
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="bg-smart-100 p-2 rounded-lg">
+                    <Target className="text-smart-600" size={20} />
                   </div>
-                  <h3 className="text-xl font-bold text-slate-900">Cœur de Cible</h3>
+                  <h3 className="text-base md:text-lg font-bold text-slate-900">Cœur de Cible</h3>
                 </div>
-                <p className="text-slate-600 leading-relaxed">
+                <p className="text-slate-600 text-xs md:text-sm leading-relaxed">
                   Médecins installés en cabinet de groupe ou individuel à fort volume (20+ patients/jour), cherchant à optimiser leur temps administratif et sécuriser leur pratique.
                 </p>
               </motion.div>
@@ -709,15 +709,15 @@ function App() {
                 initial={{ x: -20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.3 }}
-                className="bg-white p-8 rounded-3xl border-2 border-slate-200 shadow-lg"
+                className="bg-white p-5 md:p-6 rounded-2xl border-2 border-slate-200 shadow-lg"
               >
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="bg-smart-100 p-3 rounded-xl">
-                    <TrendingUp className="text-smart-600" size={28} />
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="bg-smart-100 p-2 rounded-lg">
+                    <TrendingUp className="text-smart-600" size={20} />
                   </div>
-                  <h3 className="text-xl font-bold text-slate-900">Tendance de Fond</h3>
+                  <h3 className="text-base md:text-lg font-bold text-slate-900">Tendance de Fond</h3>
                 </div>
-                <p className="text-slate-600 leading-relaxed">
+                <p className="text-slate-600 text-xs md:text-sm leading-relaxed">
                   Généralisation de l'AMO (Assurance Maladie Obligatoire) qui impose une rigueur administrative accrue (feuilles de soins) que SmartDoc automatise entièrement.
                 </p>
               </motion.div>
@@ -742,11 +742,11 @@ function App() {
         {/* SLIDE 9: BUSINESS MODEL */}
         <SlideContainer isActive={currentSlide === 9} darkBg={true}>
           <SectionTitle subtitle="Revenus Récurrents" white={true}>Business Model</SectionTitle>
-          <p className="text-slate-300 mb-12 md:mb-16 text-lg md:text-xl">
+          <p className="text-slate-300 mb-4 md:mb-6 text-base md:text-lg flex-shrink-0">
             Modèle SaaS B2B classique, lisible et <span className="font-bold text-smart-400">scalable</span>.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 flex-1">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 flex-1">
             <motion.div
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -813,19 +813,19 @@ function App() {
         <SlideContainer isActive={currentSlide === 10}>
           <SectionTitle subtitle="L'Avenir">Traction & Roadmap</SectionTitle>
 
-          <div className="relative border-l-4 border-smart-300 ml-4 md:ml-12 space-y-12 md:space-y-16 flex-1 py-8">
+          <div className="relative border-l-4 border-smart-300 ml-4 md:ml-8 space-y-6 md:space-y-8 flex-1 py-4">
             <motion.div
               initial={{ x: -30, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="relative pl-8 md:pl-16"
+              className="relative pl-8 md:pl-12"
             >
-              <div className="absolute -left-[18px] md:-left-[22px] top-2 w-10 h-10 bg-gradient-to-br from-smart-500 to-teal-600 rounded-full border-4 border-white shadow-xl flex items-center justify-center">
-                <CheckCircle className="text-white" size={20} />
+              <div className="absolute -left-[14px] md:-left-[18px] top-2 w-8 h-8 bg-gradient-to-br from-smart-500 to-teal-600 rounded-full border-4 border-white shadow-xl flex items-center justify-center">
+                <CheckCircle className="text-white" size={16} />
               </div>
-              <div className="bg-white p-6 md:p-8 rounded-2xl shadow-lg border-2 border-smart-200">
-                <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3">État Actuel</h3>
-                <p className="text-slate-600 text-base md:text-lg leading-relaxed">
+              <div className="bg-white p-4 md:p-6 rounded-xl shadow-lg border-2 border-smart-200">
+                <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-2">État Actuel</h3>
+                <p className="text-slate-600 text-xs md:text-sm leading-relaxed">
                   Produit V1 finalisé et stable. Modules spécialisés (Gynéco, Cardio, Pédiatrie) opérationnels. Moteur d'Intelligence calibré sur le contexte marocain.
                 </p>
               </div>
@@ -835,14 +835,14 @@ function App() {
               initial={{ x: -30, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 0.4 }}
-              className="relative pl-8 md:pl-16"
+              className="relative pl-8 md:pl-12"
             >
-              <div className="absolute -left-[18px] md:-left-[22px] top-2 w-10 h-10 bg-white border-4 border-smart-400 rounded-full shadow-xl flex items-center justify-center">
-                <Rocket className="text-smart-600" size={20} />
+              <div className="absolute -left-[14px] md:-left-[18px] top-2 w-8 h-8 bg-white border-4 border-smart-400 rounded-full shadow-xl flex items-center justify-center">
+                <Rocket className="text-smart-600" size={16} />
               </div>
-              <div className="bg-gradient-to-br from-smart-50 to-teal-50 p-6 md:p-8 rounded-2xl shadow-lg border-2 border-smart-300">
-                <h3 className="text-2xl md:text-3xl font-bold text-smart-800 mb-3">Go-To-Market Q1-Q2 2026</h3>
-                <p className="text-smart-900 text-base md:text-lg leading-relaxed">
+              <div className="bg-gradient-to-br from-smart-50 to-teal-50 p-4 md:p-6 rounded-xl shadow-lg border-2 border-smart-300">
+                <h3 className="text-lg md:text-xl font-bold text-smart-800 mb-2">Go-To-Market Q1-Q2 2026</h3>
+                <p className="text-smart-900 text-xs md:text-sm leading-relaxed">
                   Déploiement d'une force de vente terrain (Délégués digitaux) sur l'axe Casablanca-Rabat pour équiper les 100 premiers cabinets "Ambassadeurs".
                 </p>
               </div>
@@ -852,14 +852,14 @@ function App() {
               initial={{ x: -30, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 0.6 }}
-              className="relative pl-8 md:pl-16"
+              className="relative pl-8 md:pl-12"
             >
-              <div className="absolute -left-[18px] md:-left-[22px] top-2 w-10 h-10 bg-white border-4 border-slate-300 rounded-full shadow-lg flex items-center justify-center">
-                <Target className="text-slate-400" size={20} />
+              <div className="absolute -left-[14px] md:-left-[18px] top-2 w-8 h-8 bg-white border-4 border-slate-300 rounded-full shadow-lg flex items-center justify-center">
+                <Target className="text-slate-400" size={16} />
               </div>
-              <div className="bg-white p-6 md:p-8 rounded-2xl shadow-lg border-2 border-slate-200 opacity-70">
-                <h3 className="text-2xl md:text-3xl font-bold text-slate-800 mb-3">Objectif Q4 2026</h3>
-                <p className="text-slate-600 text-base md:text-lg leading-relaxed">
+              <div className="bg-white p-4 md:p-6 rounded-xl shadow-lg border-2 border-slate-200 opacity-70">
+                <h3 className="text-lg md:text-xl font-bold text-slate-800 mb-2">Objectif Q4 2026</h3>
+                <p className="text-slate-600 text-xs md:text-sm leading-relaxed">
                   Atteindre 500 médecins abonnés actifs. Lancement de l'application mobile patient (Carnet de santé connecté).
                 </p>
               </div>
@@ -870,11 +870,11 @@ function App() {
         {/* SLIDE 11: ÉQUIPE */}
         <SlideContainer isActive={currentSlide === 11} darkBg={true}>
           <SectionTitle subtitle="Expertise & Vision" white={true}>L'Équipe</SectionTitle>
-          <p className="text-xl md:text-2xl text-white/80 mb-12 md:mb-16">
+          <p className="text-lg md:text-xl text-white/80 mb-6 md:mb-8 flex-shrink-0">
             Une équipe pluridisciplinaire alliant :
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 flex-1 items-center">
             <motion.div
               initial={{ x: -30, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
