@@ -21,8 +21,10 @@ const SlideContainer = ({ children, isActive, darkBg = false }: React.PropsWithC
         transition={{ duration: 0.6, ease: "easeOut" }}
         className={`absolute inset-0 w-full h-full flex flex-col ${darkBg ? 'bg-gradient-to-br from-slate-900 via-slate-800 to-smart-900' : 'bg-gradient-to-br from-white via-slate-50 to-smart-50/30'}`}
       >
-        <div className="relative z-10 w-full h-full flex flex-col p-4 sm:p-6 md:p-8 lg:p-10 overflow-hidden pb-24">
-          {children}
+        <div className="relative z-10 w-full h-full flex flex-col p-3 sm:p-4 md:p-6 overflow-hidden pb-16">
+          <div className="flex-1 flex flex-col min-h-0">
+            {children}
+          </div>
         </div>
         {!darkBg && (
           <>
@@ -40,14 +42,14 @@ const SectionTitle = ({ children, subtitle, white = false }: { children?: React.
     initial={{ opacity: 0, x: -20 }}
     animate={{ opacity: 1, x: 0 }}
     transition={{ duration: 0.5 }}
-    className="mb-4 md:mb-6 flex-shrink-0"
+    className="mb-3 md:mb-4 flex-shrink-0"
   >
     {subtitle && (
-      <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase mb-2 ${white ? 'bg-white/10 text-white/80' : 'bg-smart-50 text-smart-700 border border-smart-200'}`}>
+      <span className={`inline-block px-2 py-0.5 rounded-full text-[10px] font-bold tracking-widest uppercase mb-1 ${white ? 'bg-white/10 text-white/80' : 'bg-smart-50 text-smart-700 border border-smart-200'}`}>
         {subtitle}
       </span>
     )}
-    <h2 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight ${white ? 'text-white' : 'text-slate-900'}`}>
+    <h2 className={`text-xl sm:text-2xl md:text-3xl font-bold tracking-tight ${white ? 'text-white' : 'text-slate-900'}`}>
       {children}
     </h2>
   </motion.div>
@@ -58,27 +60,27 @@ const Card = ({ title, children, icon: Icon, highlight = false, index = 0 }: { t
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.5, delay: index * 0.1 }}
-    className={`group relative p-4 md:p-6 rounded-2xl border-2 transition-all duration-300 h-full flex flex-col overflow-hidden ${
+    className={`group relative p-3 md:p-4 rounded-xl border-2 transition-all duration-300 h-full flex flex-col overflow-hidden ${
       highlight
         ? 'bg-gradient-to-br from-smart-600 to-smart-700 text-white border-smart-500 shadow-2xl shadow-smart-600/30 hover:shadow-smart-600/50'
         : 'bg-white/80 backdrop-blur-sm border-slate-200 hover:border-smart-300 hover:shadow-xl'
     }`}
   >
     {!highlight && <div className="absolute inset-0 bg-gradient-to-br from-smart-50/0 to-smart-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />}
-    <div className="relative z-10 flex flex-col h-full">
-      <div className="flex items-start gap-3 mb-3">
+    <div className="relative z-10 flex flex-col h-full min-h-0">
+      <div className="flex items-start gap-2 mb-2">
         {Icon && (
-          <div className={`p-2 rounded-xl transition-transform duration-300 group-hover:scale-110 ${
+          <div className={`p-1.5 rounded-lg transition-transform duration-300 group-hover:scale-110 ${
             highlight ? 'bg-white/20 text-white' : 'bg-smart-100 text-smart-600'
           }`}>
-            <Icon size={20} />
+            <Icon size={16} />
           </div>
         )}
-        <h3 className={`text-base md:text-lg font-bold flex-1 ${highlight ? 'text-white' : 'text-slate-900'}`}>
+        <h3 className={`text-sm md:text-base font-bold flex-1 leading-tight ${highlight ? 'text-white' : 'text-slate-900'}`}>
           {title}
         </h3>
       </div>
-      <div className={`text-xs md:text-sm leading-relaxed flex-1 ${highlight ? 'text-white/90' : 'text-slate-600'}`}>
+      <div className={`text-[11px] md:text-xs leading-snug flex-1 min-h-0 ${highlight ? 'text-white/90' : 'text-slate-600'}`}>
         {children}
       </div>
     </div>
@@ -220,24 +222,24 @@ function App() {
           <SectionTitle subtitle="La Réalité du Médecin-Entrepreneur" white={true}>
             Le Problème
           </SectionTitle>
-          <p className="text-lg md:text-xl text-white/80 mb-4 md:mb-6 flex-shrink-0">
+          <p className="text-base md:text-lg text-white/80 mb-2 md:mb-3 flex-shrink-0">
             Le médecin marocain moderne fait face à une <span className="font-bold text-smart-400">triple fracture</span> :
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 flex-1">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 flex-1 min-h-0">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
               className="relative group"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-red-500 to-orange-600 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity" />
-              <div className="relative bg-gradient-to-br from-slate-800 to-slate-900 p-6 md:p-8 rounded-2xl border-2 border-red-500/30 flex flex-col items-center text-center h-full">
-                <div className="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-red-500 to-orange-600 rounded-2xl flex items-center justify-center mb-6 shadow-xl">
-                  <AlertTriangle className="text-white w-8 h-8 md:w-10 md:h-10" />
+              <div className="absolute inset-0 bg-gradient-to-br from-red-500 to-orange-600 rounded-xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity" />
+              <div className="relative bg-gradient-to-br from-slate-800 to-slate-900 p-4 md:p-5 rounded-xl border-2 border-red-500/30 flex flex-col items-center text-center h-full min-h-0">
+                <div className="w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-red-500 to-orange-600 rounded-xl flex items-center justify-center mb-3 shadow-xl">
+                  <AlertTriangle className="text-white w-6 h-6 md:w-7 md:h-7" />
                 </div>
-                <h3 className="text-xl md:text-2xl font-bold text-white mb-4">Fracture Technologique & Cognitive</h3>
-                <p className="text-slate-300 leading-relaxed text-sm md:text-base">
+                <h3 className="text-base md:text-lg font-bold text-white mb-2">Fracture Technologique & Cognitive</h3>
+                <p className="text-slate-300 leading-snug text-[11px] md:text-xs">
                   Le médecin utilise des logiciels Desktop figés dans les années 2000. Passivité totale, surcharge cognitive et déconnexion des standards modernes (IA, Cloud, API).
                 </p>
               </div>
@@ -249,13 +251,13 @@ function App() {
               transition={{ delay: 0.4 }}
               className="relative group"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-orange-500 to-amber-600 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity" />
-              <div className="relative bg-gradient-to-br from-slate-800 to-slate-900 p-6 md:p-8 rounded-2xl border-2 border-orange-500/30 flex flex-col items-center text-center h-full">
-                <div className="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-orange-500 to-amber-600 rounded-2xl flex items-center justify-center mb-6 shadow-xl">
-                  <ShieldCheck className="text-white w-8 h-8 md:w-10 md:h-10" />
+              <div className="absolute inset-0 bg-gradient-to-br from-orange-500 to-amber-600 rounded-xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity" />
+              <div className="relative bg-gradient-to-br from-slate-800 to-slate-900 p-4 md:p-5 rounded-xl border-2 border-orange-500/30 flex flex-col items-center text-center h-full min-h-0">
+                <div className="w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-orange-500 to-amber-600 rounded-xl flex items-center justify-center mb-3 shadow-xl">
+                  <ShieldCheck className="text-white w-6 h-6 md:w-7 md:h-7" />
                 </div>
-                <h3 className="text-xl md:text-2xl font-bold text-white mb-4">Fracture Clinique & Sécuritaire</h3>
-                <p className="text-slate-300 leading-relaxed text-sm md:text-base">
+                <h3 className="text-base md:text-lg font-bold text-white mb-2">Fracture Clinique & Sécuritaire</h3>
+                <p className="text-slate-300 leading-snug text-[11px] md:text-xs">
                   Données non structurées, absence de filet de sécurité pour les prescriptions (DCI/Interactions), et perte d'information sur les examens externes.
                 </p>
               </div>
@@ -267,13 +269,13 @@ function App() {
               transition={{ delay: 0.6 }}
               className="relative group"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-amber-500 to-yellow-600 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity" />
-              <div className="relative bg-gradient-to-br from-slate-800 to-slate-900 p-6 md:p-8 rounded-2xl border-2 border-amber-500/30 flex flex-col items-center text-center h-full">
-                <div className="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-amber-500 to-yellow-600 rounded-2xl flex items-center justify-center mb-6 shadow-xl">
-                  <DollarSign className="text-white w-8 h-8 md:w-10 md:h-10" />
+              <div className="absolute inset-0 bg-gradient-to-br from-amber-500 to-yellow-600 rounded-xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity" />
+              <div className="relative bg-gradient-to-br from-slate-800 to-slate-900 p-4 md:p-5 rounded-xl border-2 border-amber-500/30 flex flex-col items-center text-center h-full min-h-0">
+                <div className="w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-amber-500 to-yellow-600 rounded-xl flex items-center justify-center mb-3 shadow-xl">
+                  <DollarSign className="text-white w-6 h-6 md:w-7 md:h-7" />
                 </div>
-                <h3 className="text-xl md:text-2xl font-bold text-white mb-4">Fracture Organisationnelle</h3>
-                <p className="text-slate-300 leading-relaxed text-sm md:text-base">
+                <h3 className="text-base md:text-lg font-bold text-white mb-2">Fracture Organisationnelle</h3>
+                <p className="text-slate-300 leading-snug text-[11px] md:text-xs">
                   Processus morcelés, fuite de revenus estimée à 15-20% (RDV manqués, impayés), et temps administratif gâché sans valeur ajoutée.
                 </p>
               </div>
@@ -322,24 +324,24 @@ function App() {
           <SectionTitle subtitle="Le Cœur Médical">
             Pilier 2 : La Rigueur Clinique
           </SectionTitle>
-          <p className="text-slate-600 mb-4 md:mb-6 text-base md:text-lg font-medium flex-shrink-0">
+          <p className="text-slate-600 mb-2 md:mb-3 text-sm md:text-base font-medium flex-shrink-0">
             C'est ce qui sécurise la pratique du médecin.
           </p>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 flex-1">
-            <div className="space-y-3 md:space-y-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 md:gap-4 flex-1 min-h-0">
+            <div className="space-y-2 min-h-0">
               <motion.div
                 initial={{ x: -20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.1 }}
-                className="flex gap-3 p-4 md:p-5 bg-white rounded-xl border-2 border-slate-200 hover:border-smart-300 transition-all shadow-lg hover:shadow-xl"
+                className="flex gap-2 p-3 md:p-4 bg-white rounded-lg border-2 border-slate-200 hover:border-smart-300 transition-all shadow-lg hover:shadow-xl"
               >
-                <div className="bg-smart-100 p-2 rounded-lg text-smart-600 h-fit">
-                  <FileText size={20} />
+                <div className="bg-smart-100 p-1.5 rounded-lg text-smart-600 h-fit">
+                  <FileText size={16} />
                 </div>
                 <div>
-                  <h3 className="font-bold text-slate-900 text-sm md:text-base mb-1">Dossier Patient Structuré (Standard SOAP)</h3>
-                  <p className="text-xs md:text-sm text-slate-600">
+                  <h3 className="font-bold text-slate-900 text-xs md:text-sm mb-0.5">Dossier Patient Structuré (Standard SOAP)</h3>
+                  <p className="text-[10px] md:text-xs text-slate-600 leading-snug">
                     Organisation native des données en Subjectif, Objectif, Analyse, Plan. Permet une traçabilité parfaite.
                   </p>
                 </div>
@@ -349,14 +351,14 @@ function App() {
                 initial={{ x: -20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.2 }}
-                className="flex gap-3 p-4 md:p-5 bg-white rounded-xl border-2 border-slate-200 hover:border-smart-300 transition-all shadow-lg hover:shadow-xl"
+                className="flex gap-2 p-3 md:p-4 bg-white rounded-lg border-2 border-slate-200 hover:border-smart-300 transition-all shadow-lg hover:shadow-xl"
               >
-                <div className="bg-smart-100 p-2 rounded-lg text-smart-600 h-fit">
-                  <Database size={20} />
+                <div className="bg-smart-100 p-1.5 rounded-lg text-smart-600 h-fit">
+                  <Database size={16} />
                 </div>
                 <div>
-                  <h3 className="font-bold text-slate-900 text-sm md:text-base mb-1">Base Médicale Internationale (CIM-10)</h3>
-                  <p className="text-xs md:text-sm text-slate-600">
+                  <h3 className="font-bold text-slate-900 text-xs md:text-sm mb-0.5">Base Médicale Internationale (CIM-10)</h3>
+                  <p className="text-[10px] md:text-xs text-slate-600 leading-snug">
                     Codification automatique des diagnostics pour un suivi épidémiologique et statistique précis.
                   </p>
                 </div>
@@ -366,14 +368,14 @@ function App() {
                 initial={{ x: -20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.3 }}
-                className="flex gap-3 p-4 md:p-5 bg-white rounded-xl border-2 border-slate-200 hover:border-smart-300 transition-all shadow-lg hover:shadow-xl"
+                className="flex gap-2 p-3 md:p-4 bg-white rounded-lg border-2 border-slate-200 hover:border-smart-300 transition-all shadow-lg hover:shadow-xl"
               >
-                <div className="bg-smart-100 p-2 rounded-lg text-smart-600 h-fit">
-                  <Stethoscope size={20} />
+                <div className="bg-smart-100 p-1.5 rounded-lg text-smart-600 h-fit">
+                  <Stethoscope size={16} />
                 </div>
                 <div>
-                  <h3 className="font-bold text-slate-900 text-sm md:text-base mb-1">Spécialisation Métier</h3>
-                  <p className="text-xs md:text-sm text-slate-600">
+                  <h3 className="font-bold text-slate-900 text-xs md:text-sm mb-0.5">Spécialisation Métier</h3>
+                  <p className="text-[10px] md:text-xs text-slate-600 leading-snug">
                     Modules dédiés par spécialité (Roue Obstétricale Gynéco, Courbes OMS Pédiatrie, Schémas Cardio/Ophtalmo) intégrés nativement.
                   </p>
                 </div>
@@ -384,18 +386,18 @@ function App() {
               initial={{ x: 20, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 0.4 }}
-              className="relative bg-gradient-to-br from-smart-500 to-smart-700 rounded-2xl p-5 md:p-6 overflow-hidden shadow-2xl"
+              className="relative bg-gradient-to-br from-smart-500 to-smart-700 rounded-xl p-4 md:p-5 overflow-hidden shadow-2xl min-h-0"
             >
-              <div className="absolute top-0 right-0 w-48 h-48 bg-white/10 rounded-full blur-3xl" />
+              <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-3xl" />
               <div className="relative z-10">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="bg-white/20 p-2 rounded-lg">
-                    <HeartPulse className="text-white" size={24} />
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="bg-white/20 p-1.5 rounded-lg">
+                    <HeartPulse className="text-white" size={20} />
                   </div>
-                  <h3 className="text-lg md:text-xl font-bold text-white">Prescription Sécurisée</h3>
+                  <h3 className="text-base md:text-lg font-bold text-white">Prescription Sécurisée</h3>
                 </div>
-                <p className="text-white/90 mb-4 text-xs md:text-sm">DCI & Vidal-like</p>
-                <ul className="space-y-2 md:space-y-3">
+                <p className="text-white/90 mb-2 text-[10px] md:text-xs">DCI & Vidal-like</p>
+                <ul className="space-y-1.5 md:space-y-2">
                   {[
                     'Base de données exhaustive des médicaments (Maroc)',
                     'Prescription par Nom Commercial ou DCI',
@@ -410,7 +412,7 @@ function App() {
                       className="flex gap-3 items-start text-white"
                     >
                       <CheckCircle size={20} className="flex-shrink-0 mt-0.5" />
-                      <span className="text-sm md:text-base">{item}</span>
+                      <span className="text-[10px] md:text-xs">{item}</span>
                     </motion.li>
                   ))}
                 </ul>
@@ -501,25 +503,25 @@ function App() {
           <SectionTitle subtitle="Le Game Changer">
             Pilier 4 : L'Intelligence SmartDoc
           </SectionTitle>
-          <p className="text-slate-600 mb-4 md:mb-6 text-base md:text-lg font-medium flex-shrink-0">
+          <p className="text-slate-600 mb-2 md:mb-3 text-sm md:text-base font-medium flex-shrink-0">
             C'est ce qui différencie SmartDoc de <span className="font-bold text-smart-600">tout ce qui existe</span>.
           </p>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6 flex-1">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 md:gap-4 flex-1 min-h-0">
             <motion.div
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.1 }}
-              className="relative bg-gradient-to-br from-purple-500 to-pink-600 p-8 rounded-3xl border-2 border-purple-400/50 shadow-2xl overflow-hidden"
+              className="relative bg-gradient-to-br from-purple-500 to-pink-600 p-4 md:p-5 rounded-xl border-2 border-purple-400/50 shadow-2xl overflow-hidden min-h-0"
             >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-white/20 rounded-full blur-2xl" />
+              <div className="absolute top-0 right-0 w-24 h-24 bg-white/20 rounded-full blur-2xl" />
               <div className="relative z-10">
-                <div className="bg-white/20 p-4 rounded-2xl w-fit mb-6">
-                  <Mic className="text-white" size={32} />
+                <div className="bg-white/20 p-2 rounded-lg w-fit mb-2">
+                  <Mic className="text-white" size={20} />
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-4">SmartVoice</h3>
-                <p className="text-xs text-white/80 uppercase tracking-wider mb-3 font-bold">Assistant Vocal Structuré</p>
-                <p className="text-white/90 text-sm leading-relaxed">
+                <h3 className="text-base md:text-lg font-bold text-white mb-1">SmartVoice</h3>
+                <p className="text-[9px] text-white/80 uppercase tracking-wider mb-1 font-bold">Assistant Vocal Structuré</p>
+                <p className="text-white/90 text-[10px] md:text-xs leading-snug">
                   Capacité unique à transformer une dictée naturelle (multilingue/Darija) en un dossier SOAP structuré + Ordonnance + RDV. Ce n'est pas de la simple transcription, c'est de la structuration de donnée clinique.
                 </p>
               </div>
@@ -529,16 +531,16 @@ function App() {
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="relative bg-gradient-to-br from-blue-500 to-cyan-600 p-8 rounded-3xl border-2 border-blue-400/50 shadow-2xl overflow-hidden"
+              className="relative bg-gradient-to-br from-blue-500 to-cyan-600 p-4 md:p-5 rounded-xl border-2 border-blue-400/50 shadow-2xl overflow-hidden min-h-0"
             >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-white/20 rounded-full blur-2xl" />
+              <div className="absolute top-0 right-0 w-24 h-24 bg-white/20 rounded-full blur-2xl" />
               <div className="relative z-10">
-                <div className="bg-white/20 p-4 rounded-2xl w-fit mb-6">
-                  <Target className="text-white" size={32} />
+                <div className="bg-white/20 p-2 rounded-lg w-fit mb-2">
+                  <Target className="text-white" size={20} />
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-4">SmartScan</h3>
-                <p className="text-xs text-white/80 uppercase tracking-wider mb-3 font-bold">Analyse Documentaire</p>
-                <p className="text-white/90 text-sm leading-relaxed">
+                <h3 className="text-base md:text-lg font-bold text-white mb-1">SmartScan</h3>
+                <p className="text-[9px] text-white/80 uppercase tracking-wider mb-1 font-bold">Analyse Documentaire</p>
+                <p className="text-white/90 text-[10px] md:text-xs leading-snug">
                   Numérisation intelligente des bilans biologiques et imageries (Radios/Scanners). Le système extrait les données, met en évidence les valeurs pathologiques et les classe dans le dossier.
                 </p>
               </div>
@@ -548,16 +550,16 @@ function App() {
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.3 }}
-              className="relative bg-gradient-to-br from-smart-500 to-teal-600 p-8 rounded-3xl border-2 border-smart-400/50 shadow-2xl overflow-hidden"
+              className="relative bg-gradient-to-br from-smart-500 to-teal-600 p-4 md:p-5 rounded-xl border-2 border-smart-400/50 shadow-2xl overflow-hidden min-h-0"
             >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-white/20 rounded-full blur-2xl" />
+              <div className="absolute top-0 right-0 w-24 h-24 bg-white/20 rounded-full blur-2xl" />
               <div className="relative z-10">
-                <div className="bg-white/20 p-4 rounded-2xl w-fit mb-6">
-                  <Brain className="text-white" size={32} />
+                <div className="bg-white/20 p-2 rounded-lg w-fit mb-2">
+                  <Brain className="text-white" size={20} />
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-4">SmartContext</h3>
-                <p className="text-xs text-white/80 uppercase tracking-wider mb-3 font-bold">Analyse de Dossier</p>
-                <p className="text-white/90 text-sm leading-relaxed">
+                <h3 className="text-base md:text-lg font-bold text-white mb-1">SmartContext</h3>
+                <p className="text-[9px] text-white/80 uppercase tracking-wider mb-1 font-bold">Analyse de Dossier</p>
+                <p className="text-white/90 text-[10px] md:text-xs leading-snug">
                   Algorithme de synthèse qui analyse l'historique complet du patient (consultations passées, antécédents) pour offrir au médecin un résumé des risques et points de vigilance avant chaque consultation.
                 </p>
               </div>
@@ -570,24 +572,24 @@ function App() {
           <SectionTitle subtitle="Architecture Robuste" white={true}>
             La Technologie & Sécurité
           </SectionTitle>
-          <p className="text-xl md:text-2xl text-white mb-4 md:mb-6 font-light flex-shrink-0">
+          <p className="text-base md:text-lg text-white mb-2 md:mb-3 font-light flex-shrink-0">
             Nous vendons de la <span className="font-bold text-smart-400">confiance</span>.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 flex-1">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 flex-1 min-h-0">
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.1 }}
-              className="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20"
+              className="bg-white/10 backdrop-blur-md p-4 md:p-5 rounded-xl border border-white/20"
             >
-              <div className="flex items-start gap-6">
-                <div className="bg-gradient-to-br from-smart-400 to-teal-500 p-4 rounded-xl">
-                  <Server className="text-white" size={32} />
+              <div className="flex items-start gap-3">
+                <div className="bg-gradient-to-br from-smart-400 to-teal-500 p-2 rounded-lg">
+                  <Server className="text-white" size={20} />
                 </div>
                 <div>
-                  <h3 className="text-xl md:text-2xl font-bold text-white mb-3">Architecture Cloud Souveraine</h3>
-                  <p className="text-slate-300 text-sm md:text-base">
+                  <h3 className="text-base md:text-lg font-bold text-white mb-1">Architecture Cloud Souveraine</h3>
+                  <p className="text-slate-300 text-[10px] md:text-xs leading-snug">
                     Hébergement sécurisé (Supabase), Chiffrement AES-256 des données de santé au repos et en transit.
                   </p>
                 </div>
@@ -598,15 +600,15 @@ function App() {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20"
+              className="bg-white/10 backdrop-blur-md p-4 md:p-5 rounded-xl border border-white/20"
             >
-              <div className="flex items-start gap-6">
-                <div className="bg-gradient-to-br from-smart-400 to-teal-500 p-4 rounded-xl">
-                  <Zap className="text-white" size={32} />
+              <div className="flex items-start gap-3">
+                <div className="bg-gradient-to-br from-smart-400 to-teal-500 p-2 rounded-lg">
+                  <Zap className="text-white" size={20} />
                 </div>
                 <div>
-                  <h3 className="text-xl md:text-2xl font-bold text-white mb-3">Mode Hybride (Offline-First)</h3>
-                  <p className="text-slate-300 text-sm md:text-base">
+                  <h3 className="text-base md:text-lg font-bold text-white mb-1">Mode Hybride (Offline-First)</h3>
+                  <p className="text-slate-300 text-[10px] md:text-xs leading-snug">
                     Architecture PWA (Progressive Web App) permettant de continuer à consulter les dossiers et gérer l'agenda même en cas de coupure internet.
                   </p>
                 </div>
@@ -617,15 +619,15 @@ function App() {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.3 }}
-              className="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20"
+              className="bg-white/10 backdrop-blur-md p-4 md:p-5 rounded-xl border border-white/20"
             >
-              <div className="flex items-start gap-6">
-                <div className="bg-gradient-to-br from-smart-400 to-teal-500 p-4 rounded-xl">
-                  <Globe className="text-white" size={32} />
+              <div className="flex items-start gap-3">
+                <div className="bg-gradient-to-br from-smart-400 to-teal-500 p-2 rounded-lg">
+                  <Globe className="text-white" size={20} />
                 </div>
                 <div>
-                  <h3 className="text-xl md:text-2xl font-bold text-white mb-3">Interopérabilité</h3>
-                  <p className="text-slate-300 text-sm md:text-base">
+                  <h3 className="text-base md:text-lg font-bold text-white mb-1">Interopérabilité</h3>
+                  <p className="text-slate-300 text-[10px] md:text-xs leading-snug">
                     API prête pour s'interfacer avec les futurs systèmes de santé nationaux ou laboratoires.
                   </p>
                 </div>
@@ -636,16 +638,16 @@ function App() {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.4 }}
-              className="relative bg-gradient-to-br from-smart-500 to-teal-600 p-8 rounded-2xl border-2 border-smart-400 overflow-hidden"
+              className="relative bg-gradient-to-br from-smart-500 to-teal-600 p-4 md:p-5 rounded-xl border-2 border-smart-400 overflow-hidden"
             >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-white/20 rounded-full blur-2xl" />
-              <div className="relative z-10 flex items-start gap-6">
-                <div className="bg-white/20 p-4 rounded-xl">
-                  <Brain className="text-white" size={32} />
+              <div className="absolute top-0 right-0 w-24 h-24 bg-white/20 rounded-full blur-2xl" />
+              <div className="relative z-10 flex items-start gap-3">
+                <div className="bg-white/20 p-2 rounded-lg">
+                  <Brain className="text-white" size={20} />
                 </div>
                 <div>
-                  <h3 className="text-xl md:text-2xl font-bold text-white mb-3">Moteur d'Intelligence Propriétaire</h3>
-                  <p className="text-white/90 text-sm md:text-base">
+                  <h3 className="text-base md:text-lg font-bold text-white mb-1">Moteur d'Intelligence Propriétaire</h3>
+                  <p className="text-white/90 text-[10px] md:text-xs leading-snug">
                     Combinaison de modèles de langage avancés optimisés pour le contexte médical marocain (reconnaissance des médicaments locaux, dialecte médical).
                   </p>
                 </div>
@@ -1006,7 +1008,7 @@ function App() {
           transition={{ delay: 0.5 }}
           className="absolute bottom-0 left-0 w-full bg-white/95 backdrop-blur-md border-t border-slate-200 z-50"
         >
-          <div className="flex items-center justify-between px-4 md:px-12 py-4">
+          <div className="flex items-center justify-between px-4 md:px-8 py-3">
             <div className="flex gap-2 overflow-x-auto max-w-[50%] md:max-w-none">
               {Array.from({ length: TOTAL_SLIDES }).map((_, idx) => (
                 <motion.div
