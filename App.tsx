@@ -21,7 +21,7 @@ const SlideContainer = ({ children, isActive, darkBg = false }: React.PropsWithC
         transition={{ duration: 0.6, ease: "easeOut" }}
         className={`absolute inset-0 w-full h-full flex flex-col ${darkBg ? 'bg-gradient-to-br from-slate-900 via-slate-800 to-smart-900' : 'bg-gradient-to-br from-white via-slate-50 to-smart-50/30'}`}
       >
-        <div className="relative z-10 w-full h-full flex flex-col p-2 sm:p-3 md:p-4 overflow-hidden pb-12">
+        <div className="relative z-10 w-full h-full flex flex-col p-2 sm:p-3 md:p-4 overflow-hidden pb-20">
           <div className="flex-1 flex flex-col min-h-0 overflow-hidden">
             {children}
           </div>
