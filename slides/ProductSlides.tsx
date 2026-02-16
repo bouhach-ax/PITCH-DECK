@@ -366,23 +366,23 @@ export const PillarFourSlide = () => {
             transition={{ delay: 0.2, type: 'spring', stiffness: 80 }}
             className="col-start-2 row-start-1"
           >
-            <div className="bg-white/95 backdrop-blur-md rounded-2xl p-4 border-2 border-smart-200/70 shadow-card hover:shadow-card-hover transition-all">
+            <div className="bg-gradient-to-br from-emerald-700 via-teal-700 to-emerald-800 backdrop-blur-md rounded-2xl p-4 border-2 border-emerald-500/40 shadow-card hover:shadow-card-hover transition-all">
               <div className="flex items-center gap-3 mb-2">
-                <div className="w-10 h-10 rounded-xl bg-smart-100 text-smart-600 flex items-center justify-center flex-shrink-0">
+                <div className="w-10 h-10 rounded-xl bg-white/15 text-emerald-200 flex items-center justify-center flex-shrink-0">
                   <Target size={20} />
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2">
-                    <h3 className="text-base font-extrabold text-slate-900">SmartScan</h3>
-                    <span className="text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-gradient-to-r from-smart-500 to-smart-400 text-white">
+                    <h3 className="text-base font-extrabold text-white">SmartScan</h3>
+                    <span className="text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-white/20 text-emerald-100">
                       Extraction Auto
                     </span>
                   </div>
-                  <p className="text-[10px] font-bold uppercase tracking-wider text-smart-500 mt-0.5">Analyse Documentaire Intelligente</p>
+                  <p className="text-[10px] font-bold uppercase tracking-wider text-emerald-300 mt-0.5">Analyse Documentaire Intelligente</p>
                 </div>
               </div>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                Bilans biologiques, radios et scanners numerises en un clic. Le systeme extrait les donnees, <span className="font-bold text-slate-800">met en evidence les valeurs pathologiques</span> et les classe automatiquement dans le dossier patient.
+              <p className="text-xs text-emerald-100/90 leading-relaxed">
+                Bilans biologiques, radios et scanners numerises en un clic. Le systeme extrait les donnees, <span className="font-bold text-white">met en evidence les valeurs pathologiques</span> et les classe automatiquement dans le dossier patient.
               </p>
             </div>
           </motion.div>
@@ -393,22 +393,22 @@ export const PillarFourSlide = () => {
             transition={{ delay: 0.3, type: 'spring', stiffness: 80 }}
             className="col-start-1 row-start-2 flex items-center"
           >
-            <div className="bg-white/95 backdrop-blur-md rounded-2xl p-4 border-2 border-cyan-200/70 shadow-card hover:shadow-card-hover transition-all w-full">
+            <div className="bg-gradient-to-br from-teal-700 via-emerald-700 to-teal-800 backdrop-blur-md rounded-2xl p-4 border-2 border-teal-500/40 shadow-card hover:shadow-card-hover transition-all w-full">
               <div className="flex items-center gap-3 mb-2">
-                <div className="w-10 h-10 rounded-xl bg-cyan-100 text-cyan-600 flex items-center justify-center flex-shrink-0">
+                <div className="w-10 h-10 rounded-xl bg-white/15 text-teal-200 flex items-center justify-center flex-shrink-0">
                   <Mic size={20} />
                 </div>
                 <div>
-                  <h3 className="text-base font-extrabold text-slate-900">SmartVoice</h3>
-                  <p className="text-[10px] font-bold uppercase tracking-wider text-cyan-500">Assistant Vocal Structure</p>
+                  <h3 className="text-base font-extrabold text-white">SmartVoice</h3>
+                  <p className="text-[10px] font-bold uppercase tracking-wider text-teal-300">Assistant Vocal Structure</p>
                 </div>
               </div>
-              <p className="text-xs text-slate-600 leading-relaxed mb-2.5">
-                Le medecin dicte naturellement en <span className="font-bold text-slate-800">francais, arabe ou Darija</span>. SmartDoc transforme la voix en dossier SOAP structure + ordonnance + RDV.
+              <p className="text-xs text-teal-100/90 leading-relaxed mb-2.5">
+                Le medecin dicte naturellement en <span className="font-bold text-white">francais, arabe ou Darija</span>. SmartDoc transforme la voix en dossier SOAP structure + ordonnance + RDV.
               </p>
               <div className="flex flex-wrap gap-1.5">
                 {['Darija', 'Francais', 'Arabe'].map((lang) => (
-                  <span key={lang} className="px-2 py-0.5 rounded-md text-[9px] font-bold uppercase tracking-wider bg-cyan-50 text-cyan-600 border border-cyan-200">
+                  <span key={lang} className="px-2 py-0.5 rounded-md text-[9px] font-bold uppercase tracking-wider bg-white/15 text-teal-100 border border-teal-400/30">
                     {lang}
                   </span>
                 ))}
@@ -437,22 +437,22 @@ export const PillarFourSlide = () => {
             transition={{ delay: 0.4, type: 'spring', stiffness: 80 }}
             className="col-start-3 row-start-2 flex items-center"
           >
-            <div className="bg-white/95 backdrop-blur-md rounded-2xl p-4 border-2 border-emerald-200/70 shadow-card hover:shadow-card-hover transition-all w-full">
+            <div className="bg-gradient-to-br from-emerald-800 via-green-700 to-emerald-700 backdrop-blur-md rounded-2xl p-4 border-2 border-green-500/40 shadow-card hover:shadow-card-hover transition-all w-full">
               <div className="flex items-center gap-3 mb-2">
-                <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center flex-shrink-0">
+                <div className="w-10 h-10 rounded-xl bg-white/15 text-green-200 flex items-center justify-center flex-shrink-0">
                   <Brain size={20} />
                 </div>
                 <div>
-                  <h3 className="text-base font-extrabold text-slate-900">SmartContext</h3>
-                  <p className="text-[10px] font-bold uppercase tracking-wider text-emerald-500">Analyse de Dossier</p>
+                  <h3 className="text-base font-extrabold text-white">SmartContext</h3>
+                  <p className="text-[10px] font-bold uppercase tracking-wider text-green-300">Analyse de Dossier</p>
                 </div>
               </div>
-              <p className="text-xs text-slate-600 leading-relaxed mb-2.5">
-                Avant chaque consultation, l'IA analyse <span className="font-bold text-slate-800">l'historique complet</span> du patient et alerte le medecin sur les risques, allergies et interactions.
+              <p className="text-xs text-green-100/90 leading-relaxed mb-2.5">
+                Avant chaque consultation, l'IA analyse <span className="font-bold text-white">l'historique complet</span> du patient et alerte le medecin sur les risques, allergies et interactions.
               </p>
               <div className="flex flex-wrap gap-1.5">
                 {['Allergies', 'Interactions', 'Risques'].map((tag) => (
-                  <span key={tag} className="px-2 py-0.5 rounded-md text-[9px] font-bold uppercase tracking-wider bg-emerald-50 text-emerald-600 border border-emerald-200">
+                  <span key={tag} className="px-2 py-0.5 rounded-md text-[9px] font-bold uppercase tracking-wider bg-white/15 text-green-100 border border-green-400/30">
                     {tag}
                   </span>
                 ))}
@@ -475,24 +475,24 @@ export const PillarFourSlide = () => {
             />
           </motion.div>
           {[
-            { icon: Mic, title: 'SmartVoice', desc: 'Dictee multilingue vers dossier SOAP structure.', border: 'border-cyan-200/70', iconBg: 'bg-cyan-100 text-cyan-600' },
-            { icon: Target, title: 'SmartScan', desc: 'Extraction auto des bilans et imageries.', border: 'border-smart-200/70', iconBg: 'bg-smart-100 text-smart-600' },
-            { icon: Brain, title: 'SmartContext', desc: 'Synthese historique et alertes risques.', border: 'border-emerald-200/70', iconBg: 'bg-emerald-100 text-emerald-600' },
+            { icon: Mic, title: 'SmartVoice', desc: 'Dictee multilingue vers dossier SOAP structure.', bg: 'from-teal-700 via-emerald-700 to-teal-800', border: 'border-teal-500/40', iconBg: 'bg-white/15 text-teal-200' },
+            { icon: Target, title: 'SmartScan', desc: 'Extraction auto des bilans et imageries.', bg: 'from-emerald-700 via-teal-700 to-emerald-800', border: 'border-emerald-500/40', iconBg: 'bg-white/15 text-emerald-200' },
+            { icon: Brain, title: 'SmartContext', desc: 'Synthese historique et alertes risques.', bg: 'from-emerald-800 via-green-700 to-emerald-700', border: 'border-green-500/40', iconBg: 'bg-white/15 text-green-200' },
           ].map((m, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 + i * 0.1 }}
-              className={`bg-white/95 backdrop-blur-md rounded-xl p-3 border-2 ${m.border} shadow-card`}
+              className={`bg-gradient-to-br ${m.bg} backdrop-blur-md rounded-xl p-3 border-2 ${m.border} shadow-card`}
             >
               <div className="flex items-center gap-2.5">
                 <div className={`w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 ${m.iconBg}`}>
                   <m.icon size={16} />
                 </div>
                 <div>
-                  <h3 className="text-sm font-extrabold text-slate-900">{m.title}</h3>
-                  <p className="text-[11px] text-slate-500">{m.desc}</p>
+                  <h3 className="text-sm font-extrabold text-white">{m.title}</h3>
+                  <p className="text-[11px] text-emerald-100/90">{m.desc}</p>
                 </div>
               </div>
             </motion.div>
