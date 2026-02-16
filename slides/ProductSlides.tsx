@@ -327,37 +327,107 @@ export const PillarThreeSlide = () => {
 
 export const PillarFourSlide = () => {
   const modules = [
-    { icon: Mic, title: 'SmartVoice', sub: 'Assistant Vocal Structuré', text: "Capacité unique à transformer une dictée naturelle (multilingue/Darija) en un dossier SOAP structuré + Ordonnance + RDV. Ce n'est pas de la simple transcription, c'est de la structuration de donnée clinique.", color: 'bg-cyan-50 border-cyan-200', iconBg: 'bg-cyan-100 text-cyan-600', subColor: 'text-cyan-600' },
-    { icon: Target, title: 'SmartScan', sub: 'Analyse Documentaire', text: "Numérisation intelligente des bilans biologiques et imageries (Radios/Scanners). Le système extrait les données, met en évidence les valeurs pathologiques et les classe dans le dossier.", color: 'bg-smart-50 border-smart-200', iconBg: 'bg-smart-100 text-smart-600', subColor: 'text-smart-600' },
-    { icon: Brain, title: 'SmartContext', sub: 'Analyse de Dossier', text: "Algorithme de synthèse qui analyse l'historique complet du patient (consultations passées, antécédents) pour offrir au médecin un résumé des risques et points de vigilance avant chaque consultation.", color: 'bg-emerald-50 border-emerald-200', iconBg: 'bg-emerald-100 text-emerald-600', subColor: 'text-emerald-600' },
+    {
+      icon: Mic,
+      title: 'SmartVoice',
+      stat: 'Darija + FR + AR',
+      desc: 'Le medecin parle naturellement -- en francais, arabe ou Darija -- et SmartDoc structure automatiquement un dossier SOAP complet, ordonnance incluse.',
+      accent: 'from-cyan-500 to-teal-500',
+      iconBg: 'bg-cyan-100 text-cyan-600',
+      border: 'border-cyan-200/60',
+    },
+    {
+      icon: Target,
+      title: 'SmartScan',
+      stat: 'Extraction Auto',
+      desc: 'Bilans biologiques et imageries numerises en un clic. Les valeurs pathologiques sont detectees, mises en evidence et classees dans le dossier.',
+      accent: 'from-smart-500 to-smart-400',
+      iconBg: 'bg-smart-100 text-smart-600',
+      border: 'border-smart-200/60',
+    },
+    {
+      icon: Brain,
+      title: 'SmartContext',
+      stat: 'Alertes Risques',
+      desc: "Avant chaque consultation, l'IA synthese l'historique complet du patient et alerte le medecin sur les risques, allergies et interactions medicamenteuses.",
+      accent: 'from-emerald-500 to-teal-500',
+      iconBg: 'bg-emerald-100 text-emerald-600',
+      border: 'border-emerald-200/60',
+    },
   ];
 
   return (
-    <Slide>
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-smart-100/40 rounded-full blur-[150px] pointer-events-none" />
-      <SlideHeader
-        label="Le Game Changer"
-        title="Pilier 4 : L'Intelligence SmartDoc"
-        subtitle={<>C'est ce qui différencie SmartDoc de <span className="text-smart-600 font-bold">tout ce qui existe</span>.</>}
-      />
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 md:gap-4 flex-1 min-h-0">
-        {modules.map((m, i) => (
+    <div className="relative w-full h-full overflow-hidden bg-mesh">
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-smart-100/50 rounded-full blur-[150px] pointer-events-none -translate-y-1/4 translate-x-1/4" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-cyan-100/40 rounded-full blur-[120px] pointer-events-none translate-y-1/3 -translate-x-1/4" />
+
+      <div className="relative h-full flex flex-col px-5 sm:px-8 md:px-12 lg:px-14 pt-12 sm:pt-14 pb-10 overflow-y-auto scrollbar-hide">
+        <SlideHeader
+          label="Le Game Changer"
+          title="Pilier 4 : L'Intelligence SmartDoc"
+          subtitle={<>3 modules IA qui transforment radicalement la pratique medicale.</>}
+        />
+
+        <div className="flex-1 flex flex-col lg:flex-row gap-4 min-h-0">
+          <div className="lg:w-[38%] flex flex-col gap-2.5 justify-center flex-shrink-0">
+            {modules.map((m, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.15 + i * 0.12 }}
+                className={`group relative bg-white rounded-xl p-3 border ${m.border} shadow-card hover:shadow-card-hover transition-all cursor-default`}
+              >
+                <div className={`absolute left-0 top-3 bottom-3 w-[3px] rounded-full bg-gradient-to-b ${m.accent}`} />
+                <div className="pl-3">
+                  <div className="flex items-center justify-between mb-1.5">
+                    <div className="flex items-center gap-2">
+                      <div className={`w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 ${m.iconBg}`}>
+                        <m.icon size={14} />
+                      </div>
+                      <h3 className="text-sm font-extrabold text-slate-900">{m.title}</h3>
+                    </div>
+                    <span className={`text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-gradient-to-r ${m.accent} text-white`}>
+                      {m.stat}
+                    </span>
+                  </div>
+                  <p className="text-[11px] text-slate-500 leading-relaxed">{m.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+              className="flex items-center gap-4 mt-1 px-1"
+            >
+              <div className="flex items-center gap-2">
+                <Zap size={14} className="text-smart-600" />
+                <span className="text-[11px] font-bold text-slate-700">Zero saisie manuelle</span>
+              </div>
+              <div className="w-px h-4 bg-slate-200" />
+              <div className="flex items-center gap-2">
+                <ArrowRight size={14} className="text-smart-600" />
+                <span className="text-[11px] font-bold text-slate-700">Temps consult. /2</span>
+              </div>
+            </motion.div>
+          </div>
+
           <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 + i * 0.12 }}
-            className={`rounded-2xl p-4 md:p-5 flex flex-col h-full border-2 transition-all shadow-card hover:shadow-card-hover ${m.color}`}
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="lg:w-[62%] relative flex-1 min-h-0 rounded-2xl overflow-hidden shadow-hero ring-1 ring-slate-200/50"
           >
-            <div className={`p-2.5 rounded-xl w-fit mb-3 ${m.iconBg}`}>
-              <m.icon size={22} />
-            </div>
-            <h3 className="text-base md:text-lg font-extrabold text-slate-900 mb-0.5">{m.title}</h3>
-            <p className={`text-[10px] md:text-[11px] uppercase tracking-wider font-bold mb-2 ${m.subColor}`}>{m.sub}</p>
-            <p className="text-xs md:text-sm text-slate-500 leading-relaxed flex-1">{m.text}</p>
+            <img
+              src="/Gemini_Generated_Image_cgyqwecgyqwecgyq.png"
+              alt="SmartDoc Intelligence - SmartVoice, SmartScan, SmartContext"
+              className="w-full h-full object-contain bg-gradient-to-br from-slate-50 to-white"
+            />
           </motion.div>
-        ))}
+        </div>
       </div>
-    </Slide>
+    </div>
   );
 };
