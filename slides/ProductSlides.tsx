@@ -192,58 +192,58 @@ export const PillarThreeSlide = () => {
   const certTypes = ['Aptitude', 'Repos Medical', 'Orientation', 'Courrier Confrere'];
 
   return (
-    <div className="relative w-full h-full overflow-hidden bg-slate-900">
+    <div className="relative w-full h-full overflow-hidden bg-mesh">
       <motion.div
-        className="absolute top-0 right-0 w-[70%] h-full opacity-[0.18]"
-        initial={{ opacity: 0, x: 60 }}
-        animate={{ opacity: 0.18, x: 0 }}
-        transition={{ duration: 1.2, ease: 'easeOut' }}
+        className="hidden lg:block absolute top-[8%] right-[-4%] w-[52%] h-[84%] rounded-3xl overflow-hidden ring-1 ring-slate-200/50 shadow-hero"
+        initial={{ opacity: 0, x: 50, scale: 0.96 }}
+        animate={{ opacity: 1, x: 0, scale: 1 }}
+        transition={{ duration: 0.9, ease: 'easeOut' }}
       >
         <img
           src="/Gemini_Generated_Image_z9gt3z9gt3z9gt3z.png"
-          alt=""
+          alt="SmartDoc Automatisation Administrative"
           className="w-full h-full object-cover object-center"
         />
+        <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-white/70" />
       </motion.div>
 
-      <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/95 to-slate-900/40" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-smart-500/8 rounded-full blur-[150px] pointer-events-none translate-y-1/3" />
-      <div className="absolute top-0 right-1/3 w-[300px] h-[300px] bg-teal-500/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-smart-100/50 rounded-full blur-[120px] pointer-events-none translate-y-1/3" />
+      <div className="absolute top-0 left-1/3 w-[250px] h-[250px] bg-teal-100/30 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="relative h-full flex flex-col px-6 sm:px-10 md:px-14 lg:px-20 pt-16 sm:pt-20 pb-16 overflow-y-auto scrollbar-hide">
-        <WhiteSlideHeader
+        <SlideHeader
           label="La Specificite Maroc"
           title="Pilier 3 : L'Automatisation Administrative"
           subtitle="Ce qui fait gagner du temps a l'assistante et fidelise le patient."
         />
 
         <div className="flex-1 flex items-center min-h-0">
-          <div className="w-full max-w-2xl space-y-6 lg:space-y-8">
+          <div className="w-full lg:max-w-[46%] space-y-5 lg:space-y-6">
             <motion.p
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.15 }}
-              className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white/90 leading-snug"
+              className="text-lg sm:text-xl md:text-2xl font-extrabold text-slate-800 leading-snug"
             >
               Zero paperasse manuelle.
               <br />
-              <span className="text-smart-400">Tout est genere automatiquement.</span>
+              <span className="text-smart-600">Tout est genere automatiquement.</span>
             </motion.p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="space-y-3">
               <motion.div
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.25 }}
-                className="bg-white/[0.07] backdrop-blur-md rounded-2xl p-5 border border-white/10 group hover:bg-white/[0.12] transition-all"
+                className="bg-white rounded-2xl p-4 md:p-5 border border-slate-200/80 shadow-card hover:shadow-card-hover transition-all"
               >
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 rounded-xl bg-smart-500/20 flex items-center justify-center text-smart-400">
-                    <Printer size={20} />
+                <div className="flex items-center gap-3 mb-2.5">
+                  <div className="w-10 h-10 rounded-xl bg-smart-50 flex items-center justify-center text-smart-600">
+                    <Printer size={18} />
                   </div>
-                  <h3 className="text-sm md:text-base font-bold text-white">Feuilles de Soins</h3>
+                  <h3 className="text-sm md:text-base font-bold text-slate-800">Feuilles de Soins</h3>
                 </div>
-                <p className="text-xs md:text-sm text-white/50 leading-relaxed mb-4">
+                <p className="text-xs md:text-sm text-slate-500 leading-relaxed mb-3">
                   Remplissage et impression automatique des formulaires officiels directement depuis la consultation.
                 </p>
                 <div className="flex flex-wrap gap-1.5">
@@ -253,7 +253,7 @@ export const PillarThreeSlide = () => {
                       initial={{ opacity: 0, scale: 0.9 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: 0.4 + i * 0.06 }}
-                      className="px-2.5 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider bg-smart-500/15 text-smart-300 border border-smart-500/20"
+                      className="px-2.5 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider bg-smart-50 text-smart-600 border border-smart-200"
                     >
                       {tag}
                     </motion.span>
@@ -265,15 +265,15 @@ export const PillarThreeSlide = () => {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.35 }}
-                className="bg-white/[0.07] backdrop-blur-md rounded-2xl p-5 border border-white/10 group hover:bg-white/[0.12] transition-all"
+                className="bg-white rounded-2xl p-4 md:p-5 border border-slate-200/80 shadow-card hover:shadow-card-hover transition-all"
               >
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 rounded-xl bg-teal-500/20 flex items-center justify-center text-teal-400">
-                    <FileText size={20} />
+                <div className="flex items-center gap-3 mb-2.5">
+                  <div className="w-10 h-10 rounded-xl bg-teal-50 flex items-center justify-center text-teal-600">
+                    <FileText size={18} />
                   </div>
-                  <h3 className="text-sm md:text-base font-bold text-white">Certificats & Courriers</h3>
+                  <h3 className="text-sm md:text-base font-bold text-slate-800">Certificats & Courriers</h3>
                 </div>
-                <p className="text-xs md:text-sm text-white/50 leading-relaxed mb-4">
+                <p className="text-xs md:text-sm text-slate-500 leading-relaxed mb-3">
                   Bibliotheque de modeles generes en 1 clic avec les donnees du patient pre-remplies.
                 </p>
                 <div className="flex flex-wrap gap-1.5">
@@ -283,7 +283,7 @@ export const PillarThreeSlide = () => {
                       initial={{ opacity: 0, scale: 0.9 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: 0.5 + i * 0.06 }}
-                      className="px-2.5 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider bg-teal-500/15 text-teal-300 border border-teal-500/20"
+                      className="px-2.5 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider bg-teal-50 text-teal-600 border border-teal-200"
                     >
                       {tag}
                     </motion.span>
@@ -296,25 +296,25 @@ export const PillarThreeSlide = () => {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.55 }}
-              className="flex items-center gap-6 pt-2"
+              className="flex items-center gap-6 pt-1"
             >
               <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center text-smart-400">
+                <div className="w-9 h-9 rounded-lg bg-smart-50 flex items-center justify-center text-smart-600">
                   <Clock size={16} />
                 </div>
                 <div>
-                  <p className="text-2xl md:text-3xl font-black text-white">1 clic</p>
-                  <p className="text-[10px] md:text-xs text-white/40 font-medium uppercase tracking-wider">Generation instantanee</p>
+                  <p className="text-2xl md:text-3xl font-black text-slate-900">1 clic</p>
+                  <p className="text-[10px] md:text-xs text-slate-400 font-medium uppercase tracking-wider">Generation instantanee</p>
                 </div>
               </div>
-              <div className="w-px h-10 bg-white/10" />
+              <div className="w-px h-10 bg-slate-200" />
               <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center text-teal-400">
+                <div className="w-9 h-9 rounded-lg bg-teal-50 flex items-center justify-center text-teal-600">
                   <CheckCircle size={16} />
                 </div>
                 <div>
-                  <p className="text-2xl md:text-3xl font-black text-white">100%</p>
-                  <p className="text-[10px] md:text-xs text-white/40 font-medium uppercase tracking-wider">Conforme reglementation</p>
+                  <p className="text-2xl md:text-3xl font-black text-slate-900">100%</p>
+                  <p className="text-[10px] md:text-xs text-slate-400 font-medium uppercase tracking-wider">Conforme reglementation</p>
                 </div>
               </div>
             </motion.div>
