@@ -79,42 +79,80 @@ export const CoverSlide = () => (
   </div>
 );
 
-export const SummarySlide = () => (
-  <Slide>
-    <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-smart-100/50 rounded-full blur-[120px] pointer-events-none -translate-y-1/4 translate-x-1/4" />
-    <SlideHeader label="La Vision Augmentée" title="Executive Summary" />
+export const SummarySlide = () => {
+  const cards = [
+    { title: "Le Contexte", subtitle: "L'Urgence", icon: Globe, text: "La médecine mondiale vit sa plus grande mutation : l'avènement de l'IA. Le médecin de 2026 ne peut plus se contenter d'être un archiviste sur des logiciels obsolètes.", position: 'top-left' },
+    { title: "Le Manque", subtitle: "L'Obsolescence", icon: AlertTriangle, text: "Les solutions actuelles au Maroc sont des freins. Outils passifs et muets, sans assistance intelligente. De la donnée morte, jamais analysée ni valorisée.", position: 'top-right' },
+    { title: "La Solution", subtitle: "SmartDoc", icon: Zap, text: "Le Premier Assistant Médical Augmenté du Maroc. Cloud natif, fusionnant ERP de gestion et IA cognitive. Il écoute, structure, analyse et automatise.", position: 'bottom-left', highlight: true },
+    { title: "La Valeur", subtitle: "Le Boost", icon: TrendingUp, text: "Libère le médecin de la charge administrative. Automatisation SOAP, sécurisation DCI, gestion admin. Recentrage à 100% sur le soin patient.", position: 'bottom-right' },
+  ];
 
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 md:gap-4 flex-1 min-h-0">
-      <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
-        <GlassCard title="Le Contexte - L'Urgence" icon={Globe} index={0}>
-          La médecine mondiale vit sa plus grande mutation depuis l'informatique : l'avènement de l'Intelligence Artificielle. Le médecin de 2026 ne peut plus se contenter d'être un "archiviste" qui saisit des données dans des logiciels desktop déconnectés et obsolètes.
-        </GlassCard>
-        <GlassCard title="Le Manque - L'Obsolescence" icon={AlertTriangle} index={1}>
-          Les solutions actuelles au Maroc (logiciels installés localement ou simples agendas en ligne) sont des freins. Ce sont des outils passifs, "muets", qui n'offrent aucune assistance intelligente. Ils stockent de la donnée morte, sans l'analyser ni la valoriser.
-        </GlassCard>
-        <GlassCard title="La Solution SmartDoc - Le Nouveau Standard" icon={Zap} highlight index={2}>
-          SmartDoc est le Premier Assistant Médical Augmenté du Maroc. C'est une plateforme Cloud native qui fusionne la rigueur d'un ERP de gestion avec la puissance cognitive d'une IA de pointe. Il ne se contente pas de stocker : il écoute, il structure, il analyse et il automatise.
-        </GlassCard>
-        <GlassCard title="La Valeur Ajoutée - Le Boost de Performance" icon={TrendingUp} index={3}>
-          SmartDoc libère le médecin de la charge mentale administrative et technique. En automatisant la structuration des dossiers (SOAP), la sécurisation des prescriptions (DCI) et la gestion administrative, il permet au praticien de se recentrer à 100% sur son cœur de métier : le soin et la relation patient.
-        </GlassCard>
+  return (
+    <Slide>
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-smart-100/50 rounded-full blur-[120px] pointer-events-none -translate-y-1/4 translate-x-1/4" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-smart-100/30 rounded-full blur-[100px] pointer-events-none translate-y-1/3 -translate-x-1/4" />
+      <SlideHeader label="La Vision Augmentee" title="Executive Summary" />
+
+      <div className="relative flex-1 min-h-0">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.92 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.15, duration: 0.7 }}
+          className="absolute inset-0 flex items-center justify-center z-0"
+        >
+          <div className="relative w-[55%] max-w-[520px] aspect-[16/10] rounded-3xl overflow-hidden shadow-hero border-2 border-white/60">
+            <img
+              src="/Gemini_Generated_Image_myammomyammomyam.jpeg"
+              alt="SmartDoc - Avant et Apres"
+              className="w-full h-full object-cover"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+          </div>
+        </motion.div>
+
+        <div className="relative z-10 h-full grid grid-cols-2 grid-rows-2 gap-3 md:gap-4">
+          {cards.map((card, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: i < 2 ? -15 : 15, x: i % 2 === 0 ? -15 : 15 }}
+              animate={{ opacity: 1, y: 0, x: 0 }}
+              transition={{ delay: 0.2 + i * 0.1, duration: 0.5 }}
+              className={`flex ${i < 2 ? 'items-start' : 'items-end'} ${i % 2 === 0 ? 'justify-start' : 'justify-end'}`}
+            >
+              <div
+                className={`max-w-[280px] rounded-2xl p-4 backdrop-blur-xl border transition-all duration-300 ${
+                  card.highlight
+                    ? 'bg-smart-600/95 border-smart-400/50 shadow-hero'
+                    : 'bg-white/90 border-slate-200/80 shadow-card hover:shadow-card-hover hover:border-smart-200'
+                }`}
+              >
+                <div className="flex items-center gap-2.5 mb-2">
+                  <div className={`p-1.5 rounded-lg flex-shrink-0 ${
+                    card.highlight ? 'bg-white/20 text-white' : 'bg-smart-50 text-smart-600'
+                  }`}>
+                    <card.icon size={16} />
+                  </div>
+                  <div>
+                    <h3 className={`text-sm font-bold leading-tight ${card.highlight ? 'text-white' : 'text-slate-800'}`}>
+                      {card.title}
+                    </h3>
+                    <span className={`text-[10px] font-semibold uppercase tracking-wider ${card.highlight ? 'text-white/70' : 'text-smart-500'}`}>
+                      {card.subtitle}
+                    </span>
+                  </div>
+                </div>
+                <p className={`text-xs leading-relaxed ${card.highlight ? 'text-white/85' : 'text-slate-500'}`}>
+                  {card.text}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 0.3, duration: 0.6 }}
-        className="hidden lg:flex rounded-2xl overflow-hidden shadow-hero flex-shrink-0 h-full items-center bg-slate-50"
-      >
-        <img
-          src="/Gemini_Generated_Image_myammomyammomyam.jpeg"
-          alt="SmartDoc - Avant et Après"
-          className="w-full h-full object-contain"
-          loading="lazy"
-        />
-      </motion.div>
-    </div>
-  </Slide>
-);
+    </Slide>
+  );
+};
 
 export const ProblemSlide = () => {
   const fractures = [
