@@ -3,7 +3,9 @@ import { motion } from 'framer-motion';
 import {
   Server, Zap, Globe, Brain,
   LineChart, Target, TrendingUp,
-  Calendar, Award, Sparkles
+  Calendar, Award, Sparkles,
+  Users, Stethoscope, MapPin, Activity,
+  ArrowUpRight, ChevronRight, CircleDot
 } from 'lucide-react';
 import { Slide, DarkSlide, SlideHeader, WhiteSlideHeader, GlassCard, SlideImage } from '../components/SlideComponents';
 import { MarketChart } from '../components/Charts';
@@ -52,89 +54,161 @@ export const TechSlide = () => (
   </DarkSlide>
 );
 
-export const MarketSlide = () => (
-  <Slide>
-    <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-smart-100/60 rounded-full blur-[120px] pointer-events-none" />
-    <SlideHeader label="Secteur Privé" title="Le Marché & La Cible" />
+export const MarketSlide = () => {
+  const marketStats = [
+    { icon: Stethoscope, value: '17K', label: 'Medecins prives', sublabel: 'au Maroc' },
+    { icon: MapPin, value: '65%', label: 'Casablanca & Rabat', sublabel: 'concentration urbaine' },
+    { icon: Activity, value: '<5%', label: 'Taux de digitalisation', sublabel: 'opportunite massive' },
+  ];
 
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 flex-1 min-h-0">
-      <div className="flex flex-col gap-3 min-h-0">
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="bg-gradient-to-br from-smart-600 to-smart-700 rounded-2xl p-5 md:p-6 text-white shadow-hero relative overflow-hidden"
-        >
-          <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full blur-[60px]" />
-          <div className="flex items-center gap-3 mb-3 relative z-10">
-            <div className="bg-white/20 p-2 rounded-xl">
-              <LineChart className="text-white" size={18} />
-            </div>
-            <h3 className="text-base md:text-lg font-bold">Total Addressable Market</h3>
-          </div>
-          <p className="text-2xl md:text-3xl font-black mb-1 relative z-10">~28,000</p>
-          <p className="text-white/70 text-xs md:text-sm mb-3 relative z-10">Médecins au Maroc (Secteur Privé)</p>
-          <div className="grid grid-cols-2 gap-3 pt-3 border-t border-white/15 relative z-10">
-            <div>
-              <p className="text-xl md:text-2xl font-extrabold">12K</p>
-              <p className="text-white/60 text-xs">Généralistes</p>
-            </div>
-            <div>
-              <p className="text-xl md:text-2xl font-extrabold">16K</p>
-              <p className="text-white/60 text-xs">Spécialistes</p>
-            </div>
-          </div>
-        </motion.div>
+  const painPoints = [
+    'Dossiers papier ou Excel -- zero tracabilite',
+    'Aucun outil adapte au contexte marocain (langue, reglementation)',
+    'Perte de temps administrative : 40% du temps medecin',
+    'Zero aide a la decision clinique',
+  ];
 
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="bg-white rounded-2xl p-4 md:p-5 border border-slate-200/80 shadow-card"
-        >
-          <div className="flex items-center gap-2.5 mb-2">
-            <div className="p-2 rounded-xl bg-smart-50 text-smart-600">
-              <Target size={16} />
-            </div>
-            <h3 className="text-sm md:text-base font-bold text-slate-800">Coeur de Cible</h3>
-          </div>
-          <p className="text-xs md:text-sm text-slate-500 leading-relaxed">
-            Médecins installés en cabinet de groupe ou individuel à fort volume (20+ patients/jour), cherchant à optimiser leur temps administratif et sécuriser leur pratique.
-          </p>
-        </motion.div>
+  return (
+    <div className="relative w-full h-full overflow-hidden bg-hero">
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-smart-500/10 rounded-full blur-[180px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-emerald-500/8 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-teal-400/5 rounded-full blur-[100px] pointer-events-none" />
 
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          className="bg-white rounded-2xl p-4 md:p-5 border border-slate-200/80 shadow-card"
-        >
-          <div className="flex items-center gap-2.5 mb-2">
-            <div className="p-2 rounded-xl bg-smart-50 text-smart-600">
-              <TrendingUp size={16} />
-            </div>
-            <h3 className="text-sm md:text-base font-bold text-slate-800">Tendance de Fond</h3>
+      <div className="relative h-full flex flex-col px-5 sm:px-8 md:px-12 lg:px-14 pt-10 sm:pt-12 pb-8 overflow-y-auto scrollbar-hide">
+        <div className="mb-4 md:mb-5 flex-shrink-0">
+          <motion.span
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="inline-block px-4 py-1.5 rounded-full text-[11px] sm:text-xs font-bold tracking-[0.12em] uppercase text-smart-300 bg-smart-500/20 border border-smart-400/25 mb-3"
+          >
+            Secteur Prive
+          </motion.span>
+          <motion.h2
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.05 }}
+            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight"
+          >
+            Un marche de <span className="text-transparent bg-clip-text bg-gradient-to-r from-smart-300 to-emerald-300">17 000 medecins</span>
+            <br />
+            <span className="text-white/60">qui attend sa revolution digitale.</span>
+          </motion.h2>
+        </div>
+
+        <div className="flex-1 min-h-0 grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-4 md:gap-5">
+          <div className="flex flex-col gap-3 min-h-0">
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.12 }}
+              className="grid grid-cols-3 gap-2.5"
+            >
+              {marketStats.map((stat, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.15 + i * 0.08, type: 'spring', stiffness: 80 }}
+                  className="relative bg-white/[0.06] backdrop-blur-sm rounded-2xl p-4 border border-white/[0.1] hover:bg-white/[0.1] transition-all group overflow-hidden"
+                >
+                  <div className="absolute -top-4 -right-4 w-16 h-16 bg-smart-400/10 rounded-full blur-[25px] group-hover:bg-smart-400/20 transition-all" />
+                  <div className="p-2 rounded-xl bg-smart-500/20 text-smart-300 w-fit mb-3">
+                    <stat.icon size={18} />
+                  </div>
+                  <p className="text-xl md:text-2xl font-black text-white mb-0.5">{stat.value}</p>
+                  <p className="text-[11px] md:text-xs font-bold text-white/80 leading-tight">{stat.label}</p>
+                  <p className="text-[10px] text-white/40 mt-0.5">{stat.sublabel}</p>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.35 }}
+              className="bg-gradient-to-br from-smart-600/30 to-smart-700/20 backdrop-blur-sm rounded-2xl p-5 border border-smart-400/20 flex-1 min-h-0 flex flex-col"
+            >
+              <div className="flex items-center gap-2.5 mb-3">
+                <div className="p-2 rounded-xl bg-smart-400/20 text-smart-300">
+                  <Target size={18} />
+                </div>
+                <h3 className="text-sm md:text-base font-bold text-white">Coeur de Cible</h3>
+              </div>
+              <p className="text-xs md:text-sm text-white/65 leading-relaxed mb-3">
+                Medecins installes en <span className="text-white font-semibold">cabinet prive</span> a fort volume
+                (20+ patients/jour), noyes sous l'administratif et en quete d'un outil qui les comprend.
+              </p>
+              <div className="flex items-center gap-3 mt-auto pt-3 border-t border-white/10">
+                <div className="flex items-center gap-1.5">
+                  <Users size={14} className="text-smart-300" />
+                  <span className="text-[11px] font-bold text-white/70">20+ patients/jour</span>
+                </div>
+                <div className="w-px h-4 bg-white/10" />
+                <div className="flex items-center gap-1.5">
+                  <ArrowUpRight size={14} className="text-emerald-400" />
+                  <span className="text-[11px] font-bold text-white/70">Forte demande</span>
+                </div>
+              </div>
+            </motion.div>
           </div>
-          <p className="text-xs md:text-sm text-slate-500 leading-relaxed">
-            Généralisation de l'AMO (Assurance Maladie Obligatoire) qui impose une rigueur administrative accrue (feuilles de soins) que SmartDoc automatise entièrement.
-          </p>
-        </motion.div>
+
+          <div className="flex flex-col gap-3 min-h-0">
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.25, type: 'spring', stiffness: 80 }}
+              className="bg-white/[0.06] backdrop-blur-sm rounded-2xl p-5 border border-white/[0.1] flex-1 min-h-0 flex flex-col"
+            >
+              <div className="flex items-center gap-2.5 mb-4">
+                <div className="p-2 rounded-xl bg-red-500/20 text-red-400">
+                  <Zap size={18} />
+                </div>
+                <div>
+                  <h3 className="text-sm md:text-base font-bold text-white">La Douleur du Marche</h3>
+                  <p className="text-[10px] text-white/40 font-medium">Ce que vivent 17K medecins au quotidien</p>
+                </div>
+              </div>
+              <div className="flex flex-col gap-2.5 flex-1">
+                {painPoints.map((point, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, x: 15 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.4 + i * 0.08 }}
+                    className="flex items-start gap-3 group"
+                  >
+                    <div className="w-6 h-6 rounded-lg bg-red-500/15 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-red-500/25 transition-all">
+                      <CircleDot size={12} className="text-red-400" />
+                    </div>
+                    <p className="text-xs md:text-sm text-white/70 leading-relaxed group-hover:text-white/90 transition-colors">{point}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.55 }}
+              className="bg-gradient-to-r from-smart-500/25 via-emerald-500/20 to-teal-500/25 backdrop-blur-sm rounded-2xl p-4 border border-smart-400/20 flex items-center gap-4"
+            >
+              <div className="p-2.5 rounded-xl bg-emerald-400/20 text-emerald-300 flex-shrink-0">
+                <TrendingUp size={20} />
+              </div>
+              <div className="flex-1 min-w-0">
+                <h3 className="text-sm font-bold text-white mb-0.5">Opportunite Unique</h3>
+                <p className="text-[11px] text-white/55 leading-relaxed">
+                  Un marche vierge de <span className="text-emerald-300 font-semibold">+3.5 milliards MAD</span> de depenses sante privee, sans leader digital installe. Le premier qui s'impose <span className="text-white font-semibold">prend tout</span>.
+                </p>
+              </div>
+              <ChevronRight size={20} className="text-white/30 flex-shrink-0" />
+            </motion.div>
+          </div>
+        </div>
       </div>
-
-      <motion.div
-        initial={{ scale: 0.95, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ delay: 0.3 }}
-        className="bg-white rounded-2xl border border-slate-200/80 shadow-card p-4 flex items-center justify-center"
-      >
-        <MarketChart data={[
-          { name: 'Généralistes', value: 12000 },
-          { name: 'Spécialistes', value: 16000 }
-        ]} />
-      </motion.div>
     </div>
-  </Slide>
-);
+  );
+};
 
 export const BusinessSlide = () => (
   <Slide>
