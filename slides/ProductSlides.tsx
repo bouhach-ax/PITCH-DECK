@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import {
   Calendar, CheckCircle, Users, CreditCard, ShieldCheck, BarChart3,
   FileText, Database, Stethoscope, HeartPulse,
-  Zap, Mic, Target, Brain
+  Zap, Mic, Target, Brain, Printer, Clock, ArrowRight
 } from 'lucide-react';
 import { Slide, DarkSlide, SlideHeader, WhiteSlideHeader, GlassCard, SlideImage } from '../components/SlideComponents';
 
@@ -187,47 +187,141 @@ export const PillarTwoSlide = () => {
 };
 
 export const PillarThreeSlide = () => {
-  const features = [
-    { icon: FileText, title: 'Générateur de Feuilles de Soins', text: 'Remplissage et impression automatique des formulaires officiels (CNOPS, CNSS, AXA, Assurances Privées) directement depuis la consultation.' },
-    { icon: CheckCircle, title: 'Certificats & Courriers', text: "Bibliothèque de modèles (Aptitude, Repos, Orientation) générés en 1 clic avec les données du patient." },
-  ];
+  const insuranceTags = ['CNOPS', 'CNSS', 'AXA', 'Assurances Privees'];
+
+  const certTypes = ['Aptitude', 'Repos Medical', 'Orientation', 'Courrier Confrere'];
 
   return (
-    <DarkSlide>
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-smart-400/10 rounded-full blur-[150px] pointer-events-none" />
-      <WhiteSlideHeader
-        label="La Spécificité Maroc"
-        title="Pilier 3 : L'Automatisation Administrative"
-        subtitle="C'est ce qui fait gagner du temps à l'assistante et fidélise le patient."
-      />
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 flex-1 min-h-0 items-center">
-        <div className="flex flex-col gap-4">
-          {features.map((item, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, x: -15 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.1 + i * 0.15 }}
-              className="bg-white/10 backdrop-blur-sm rounded-2xl p-5 md:p-6 flex items-start gap-4 border border-white/15 hover:bg-white/15 transition-colors"
+    <div className="relative w-full h-full overflow-hidden bg-slate-900">
+      <motion.div
+        className="absolute top-0 right-0 w-[70%] h-full opacity-[0.18]"
+        initial={{ opacity: 0, x: 60 }}
+        animate={{ opacity: 0.18, x: 0 }}
+        transition={{ duration: 1.2, ease: 'easeOut' }}
+      >
+        <img
+          src="/Gemini_Generated_Image_z9gt3z9gt3z9gt3z.png"
+          alt=""
+          className="w-full h-full object-cover object-center"
+        />
+      </motion.div>
+
+      <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/95 to-slate-900/40" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-smart-500/8 rounded-full blur-[150px] pointer-events-none translate-y-1/3" />
+      <div className="absolute top-0 right-1/3 w-[300px] h-[300px] bg-teal-500/5 rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="relative h-full flex flex-col px-6 sm:px-10 md:px-14 lg:px-20 pt-16 sm:pt-20 pb-16 overflow-y-auto scrollbar-hide">
+        <WhiteSlideHeader
+          label="La Specificite Maroc"
+          title="Pilier 3 : L'Automatisation Administrative"
+          subtitle="Ce qui fait gagner du temps a l'assistante et fidelise le patient."
+        />
+
+        <div className="flex-1 flex items-center min-h-0">
+          <div className="w-full max-w-2xl space-y-6 lg:space-y-8">
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.15 }}
+              className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white/90 leading-snug"
             >
-              <div className="w-12 h-12 rounded-xl flex items-center justify-center text-smart-300 flex-shrink-0 bg-white/15">
-                <item.icon size={22} />
+              Zero paperasse manuelle.
+              <br />
+              <span className="text-smart-400">Tout est genere automatiquement.</span>
+            </motion.p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.25 }}
+                className="bg-white/[0.07] backdrop-blur-md rounded-2xl p-5 border border-white/10 group hover:bg-white/[0.12] transition-all"
+              >
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-10 h-10 rounded-xl bg-smart-500/20 flex items-center justify-center text-smart-400">
+                    <Printer size={20} />
+                  </div>
+                  <h3 className="text-sm md:text-base font-bold text-white">Feuilles de Soins</h3>
+                </div>
+                <p className="text-xs md:text-sm text-white/50 leading-relaxed mb-4">
+                  Remplissage et impression automatique des formulaires officiels directement depuis la consultation.
+                </p>
+                <div className="flex flex-wrap gap-1.5">
+                  {insuranceTags.map((tag, i) => (
+                    <motion.span
+                      key={tag}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.4 + i * 0.06 }}
+                      className="px-2.5 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider bg-smart-500/15 text-smart-300 border border-smart-500/20"
+                    >
+                      {tag}
+                    </motion.span>
+                  ))}
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.35 }}
+                className="bg-white/[0.07] backdrop-blur-md rounded-2xl p-5 border border-white/10 group hover:bg-white/[0.12] transition-all"
+              >
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-10 h-10 rounded-xl bg-teal-500/20 flex items-center justify-center text-teal-400">
+                    <FileText size={20} />
+                  </div>
+                  <h3 className="text-sm md:text-base font-bold text-white">Certificats & Courriers</h3>
+                </div>
+                <p className="text-xs md:text-sm text-white/50 leading-relaxed mb-4">
+                  Bibliotheque de modeles generes en 1 clic avec les donnees du patient pre-remplies.
+                </p>
+                <div className="flex flex-wrap gap-1.5">
+                  {certTypes.map((tag, i) => (
+                    <motion.span
+                      key={tag}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.5 + i * 0.06 }}
+                      className="px-2.5 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider bg-teal-500/15 text-teal-300 border border-teal-500/20"
+                    >
+                      {tag}
+                    </motion.span>
+                  ))}
+                </div>
+              </motion.div>
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.55 }}
+              className="flex items-center gap-6 pt-2"
+            >
+              <div className="flex items-center gap-3">
+                <div className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center text-smart-400">
+                  <Clock size={16} />
+                </div>
+                <div>
+                  <p className="text-2xl md:text-3xl font-black text-white">1 clic</p>
+                  <p className="text-[10px] md:text-xs text-white/40 font-medium uppercase tracking-wider">Generation instantanee</p>
+                </div>
               </div>
-              <div>
-                <h3 className="text-base md:text-lg font-bold text-white mb-1.5">{item.title}</h3>
-                <p className="text-sm md:text-base text-white/60 leading-relaxed">{item.text}</p>
+              <div className="w-px h-10 bg-white/10" />
+              <div className="flex items-center gap-3">
+                <div className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center text-teal-400">
+                  <CheckCircle size={16} />
+                </div>
+                <div>
+                  <p className="text-2xl md:text-3xl font-black text-white">100%</p>
+                  <p className="text-[10px] md:text-xs text-white/40 font-medium uppercase tracking-wider">Conforme reglementation</p>
+                </div>
               </div>
             </motion.div>
-          ))}
+          </div>
         </div>
-
-        <SlideImage
-          src="https://images.pexels.com/photos/8942090/pexels-photo-8942090.jpeg?auto=compress&cs=tinysrgb&w=800"
-          alt="Automatisation administrative"
-          className="h-48 md:h-64 lg:h-full"
-        />
       </div>
-    </DarkSlide>
+    </div>
   );
 };
 
