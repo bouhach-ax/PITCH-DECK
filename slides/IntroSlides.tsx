@@ -99,11 +99,19 @@ export const SummarySlide = () => (
           SmartDoc libère le médecin de la charge mentale administrative et technique. En automatisant la structuration des dossiers (SOAP), la sécurisation des prescriptions (DCI) et la gestion administrative, il permet au praticien de se recentrer à 100% sur son cœur de métier : le soin et la relation patient.
         </GlassCard>
       </div>
-      <SlideImage
-        src="/Gemini_Generated_Image_myammomyammomyam.jpeg"
-        alt="SmartDoc - Avant et Après"
-        className="hidden lg:block h-full"
-      />
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 0.3, duration: 0.6 }}
+        className="hidden lg:flex rounded-2xl overflow-hidden shadow-hero flex-shrink-0 h-full items-center bg-slate-50"
+      >
+        <img
+          src="/Gemini_Generated_Image_myammomyammomyam.jpeg"
+          alt="SmartDoc - Avant et Après"
+          className="w-full h-full object-contain"
+          loading="lazy"
+        />
+      </motion.div>
     </div>
   </Slide>
 );

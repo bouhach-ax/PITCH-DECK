@@ -19,7 +19,7 @@ export default defineConfig(({ mode }) => {
           '@': path.resolve(__dirname, '.'),
         }
       },
-      publicDir: 'public',
+      publicDir: 'static',
       build: {
         copyPublicDir: true,
         rollupOptions: {
