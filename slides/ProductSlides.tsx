@@ -8,14 +8,34 @@ import {
 import { Slide, DarkSlide, SlideHeader, WhiteSlideHeader, GlassCard, SlideImage } from '../components/SlideComponents';
 
 export const PillarOneSlide = () => {
-  const features = [
-    { icon: Calendar, title: 'Gestion des RDV', color: 'bg-smart-50 text-smart-600 border-smart-200' },
-    { icon: CheckCircle, title: 'Anti-Absenteisme', color: 'bg-emerald-50 text-emerald-600 border-emerald-200' },
-    { icon: Users, title: 'Salle d\'Attente', color: 'bg-cyan-50 text-cyan-600 border-cyan-200' },
-    { icon: CreditCard, title: 'Pilotage Financier', color: 'bg-smart-600 text-white border-smart-600', highlight: true },
-    { icon: ShieldCheck, title: 'Gestion des Roles', color: 'bg-slate-50 text-slate-600 border-slate-200' },
-    { icon: BarChart3, title: 'Rapports & Analytics', color: 'bg-teal-50 text-teal-600 border-teal-200' },
+  const leftFeatures = [
+    { icon: Calendar, title: 'Gestion Avancee des RDV', text: 'Agenda multi-vues, gestion des urgences et listes d\'attente intelligentes.', accent: 'bg-smart-100 text-smart-600' },
+    { icon: CheckCircle, title: 'Systeme Anti-Absenteisme', text: 'Rappels automatiques SMS/WhatsApp 24h/48h avant. Reduction drastique des No-Shows.', accent: 'bg-emerald-100 text-emerald-600' },
+    { icon: Users, title: 'Salle d\'Attente Digitale', text: 'Suivi en temps reel des patients presents avec chrono d\'attente optimise.', accent: 'bg-cyan-100 text-cyan-600' },
   ];
+
+  const rightFeatures = [
+    { icon: CreditCard, title: 'Pilotage Financier', text: 'Facturation complete, encaissements, gestion des impayes et tableau de bord CA securise.', accent: 'bg-smart-600 text-white', highlight: true },
+    { icon: ShieldCheck, title: 'Gestion des Roles', text: 'Interface Assistante dediee avec cloisonnement strict des donnees medicales et financieres.', accent: 'bg-slate-100 text-slate-600' },
+    { icon: BarChart3, title: 'Rapports & Analytics', text: 'Tableaux de bord en temps reel pour optimiser la prise de decision.', accent: 'bg-teal-100 text-teal-600' },
+  ];
+
+  const FeatureItem = ({ f, i, align }: { f: typeof leftFeatures[0] & { highlight?: boolean }; i: number; align: 'left' | 'right' }) => (
+    <motion.div
+      initial={{ opacity: 0, x: align === 'left' ? -15 : 15 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ delay: 0.2 + i * 0.12 }}
+      className={`flex flex-col gap-1.5 ${align === 'left' ? 'items-end text-right' : 'items-start text-left'}`}
+    >
+      <div className={`flex items-center gap-2.5 ${align === 'left' ? 'flex-row-reverse' : ''}`}>
+        <div className={`w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 ${f.accent}`}>
+          <f.icon size={16} />
+        </div>
+        <h3 className={`text-[13px] md:text-sm font-bold leading-tight ${f.highlight ? 'text-smart-700' : 'text-slate-800'}`}>{f.title}</h3>
+      </div>
+      <p className="text-[11px] md:text-xs text-slate-500 leading-relaxed max-w-[200px]">{f.text}</p>
+    </motion.div>
+  );
 
   return (
     <Slide>
@@ -26,32 +46,31 @@ export const PillarOneSlide = () => {
         subtitle="C'est ce qui fait tourner le cabinet au quotidien."
       />
 
-      <motion.div
-        initial={{ opacity: 0, scale: 0.97 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.7 }}
-        className="relative flex-1 min-h-0 rounded-3xl overflow-hidden shadow-hero ring-1 ring-slate-200/60"
-      >
-        <img
-          src="/Gemini_Generated_Image_6t0uc06t0uc06t0u.png"
-          alt="SmartDoc Administration & Gestion - 6 modules"
-          className="w-full h-full object-contain bg-gradient-to-br from-slate-50 to-smart-50/30"
-        />
-      </motion.div>
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_2.8fr_1fr] gap-4 lg:gap-5 flex-1 min-h-0 items-center">
+        <div className="hidden lg:flex flex-col gap-6 justify-center py-2">
+          {leftFeatures.map((f, i) => (
+            <FeatureItem key={i} f={f} i={i} align="left" />
+          ))}
+        </div>
 
-      <div className="grid grid-cols-3 md:grid-cols-6 gap-2 mt-3 flex-shrink-0">
-        {features.map((f, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 + i * 0.07 }}
-            className={`flex items-center gap-2 rounded-xl px-2.5 py-2 border transition-all ${f.color}`}
-          >
-            <f.icon size={14} className="flex-shrink-0" />
-            <span className={`text-[11px] md:text-xs font-bold leading-tight ${f.highlight ? 'text-white' : ''}`}>{f.title}</span>
-          </motion.div>
-        ))}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.97 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.7 }}
+          className="relative h-full min-h-0 rounded-2xl overflow-hidden shadow-hero ring-1 ring-slate-200/60"
+        >
+          <img
+            src="/Gemini_Generated_Image_6t0uc06t0uc06t0u.png"
+            alt="SmartDoc Administration & Gestion - 6 modules"
+            className="w-full h-full object-contain"
+          />
+        </motion.div>
+
+        <div className="hidden lg:flex flex-col gap-6 justify-center py-2">
+          {rightFeatures.map((f, i) => (
+            <FeatureItem key={i} f={f} i={i + 3} align="right" />
+          ))}
+        </div>
       </div>
     </Slide>
   );
