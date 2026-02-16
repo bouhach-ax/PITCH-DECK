@@ -331,102 +331,165 @@ export const PillarFourSlide = () => {
       icon: Mic,
       title: 'SmartVoice',
       stat: 'Darija + FR + AR',
-      desc: 'Le medecin parle naturellement -- en francais, arabe ou Darija -- et SmartDoc structure automatiquement un dossier SOAP complet, ordonnance incluse.',
+      desc: 'Dictee naturelle multilingue transformee en dossier SOAP structure, ordonnance et RDV.',
       accent: 'from-cyan-500 to-teal-500',
       iconBg: 'bg-cyan-100 text-cyan-600',
       border: 'border-cyan-200/60',
+      position: 'left-0 top-[12%]',
+      animDir: { x: -30, y: 0 },
     },
     {
       icon: Target,
       title: 'SmartScan',
       stat: 'Extraction Auto',
-      desc: 'Bilans biologiques et imageries numerises en un clic. Les valeurs pathologiques sont detectees, mises en evidence et classees dans le dossier.',
+      desc: 'Bilans et imageries numerises : valeurs pathologiques detectees et classees automatiquement.',
       accent: 'from-smart-500 to-smart-400',
       iconBg: 'bg-smart-100 text-smart-600',
       border: 'border-smart-200/60',
+      position: 'left-1/2 -translate-x-1/2 top-0',
+      animDir: { x: 0, y: -30 },
     },
     {
       icon: Brain,
       title: 'SmartContext',
       stat: 'Alertes Risques',
-      desc: "Avant chaque consultation, l'IA synthese l'historique complet du patient et alerte le medecin sur les risques, allergies et interactions medicamenteuses.",
+      desc: "Synthese de l'historique patient avec alertes risques, allergies et interactions avant chaque consultation.",
       accent: 'from-emerald-500 to-teal-500',
       iconBg: 'bg-emerald-100 text-emerald-600',
       border: 'border-emerald-200/60',
+      position: 'right-0 top-[12%]',
+      animDir: { x: 30, y: 0 },
     },
   ];
 
   return (
     <div className="relative w-full h-full overflow-hidden bg-mesh">
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-smart-100/50 rounded-full blur-[150px] pointer-events-none -translate-y-1/4 translate-x-1/4" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-cyan-100/40 rounded-full blur-[120px] pointer-events-none translate-y-1/3 -translate-x-1/4" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-smart-100/30 rounded-full blur-[180px] pointer-events-none" />
+      <div className="absolute top-0 left-0 w-[300px] h-[300px] bg-cyan-100/30 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-emerald-100/30 rounded-full blur-[100px] pointer-events-none" />
 
-      <div className="relative h-full flex flex-col px-5 sm:px-8 md:px-12 lg:px-14 pt-12 sm:pt-14 pb-10 overflow-y-auto scrollbar-hide">
-        <SlideHeader
-          label="Le Game Changer"
-          title="Pilier 4 : L'Intelligence SmartDoc"
-          subtitle={<>3 modules IA qui transforment radicalement la pratique medicale.</>}
-        />
+      <div className="relative h-full flex flex-col px-5 sm:px-8 md:px-12 lg:px-14 pt-10 sm:pt-12 pb-8 overflow-y-auto scrollbar-hide">
+        <div className="mb-2 flex-shrink-0 text-center">
+          <motion.span
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="inline-block px-4 py-1.5 rounded-full text-[11px] sm:text-xs font-bold tracking-[0.12em] uppercase text-smart-700 bg-smart-100 border border-smart-200 mb-2"
+          >
+            Le Game Changer
+          </motion.span>
+          <motion.h2
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.05 }}
+            className="text-xl sm:text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight"
+          >
+            Pilier 4 : L'Intelligence SmartDoc
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.1 }}
+            className="text-xs md:text-sm text-slate-500 mt-1 font-medium"
+          >
+            3 modules IA qui different SmartDoc de <span className="text-smart-600 font-bold">tout ce qui existe</span>.
+          </motion.p>
+        </div>
 
-        <div className="flex-1 flex flex-col lg:flex-row gap-4 min-h-0">
-          <div className="lg:w-[38%] flex flex-col gap-2.5 justify-center flex-shrink-0">
+        <div className="flex-1 relative min-h-0">
+          <div className="absolute inset-0 hidden lg:block">
             {modules.map((m, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.15 + i * 0.12 }}
-                className={`group relative bg-white rounded-xl p-3 border ${m.border} shadow-card hover:shadow-card-hover transition-all cursor-default`}
+                initial={{ opacity: 0, x: m.animDir.x, y: m.animDir.y }}
+                animate={{ opacity: 1, x: 0, y: 0 }}
+                transition={{ delay: 0.2 + i * 0.15, type: 'spring', stiffness: 80 }}
+                className={`absolute ${m.position} w-[240px] z-10`}
               >
-                <div className={`absolute left-0 top-3 bottom-3 w-[3px] rounded-full bg-gradient-to-b ${m.accent}`} />
-                <div className="pl-3">
-                  <div className="flex items-center justify-between mb-1.5">
-                    <div className="flex items-center gap-2">
+                <div className={`bg-white/90 backdrop-blur-md rounded-xl p-3 border ${m.border} shadow-card hover:shadow-card-hover transition-all`}>
+                  <div className={`absolute ${i === 0 ? 'left-0' : i === 1 ? 'left-1/2 -translate-x-1/2 -top-0 w-[3px] h-0 hidden' : 'right-0'} ${i !== 1 ? 'top-2.5 bottom-2.5 w-[3px]' : ''} rounded-full bg-gradient-to-b ${m.accent}`} />
+                  <div className={i !== 1 ? (i === 0 ? 'pl-3' : 'pr-3') : ''}>
+                    <div className="flex items-center gap-2 mb-1.5">
                       <div className={`w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 ${m.iconBg}`}>
                         <m.icon size={14} />
                       </div>
-                      <h3 className="text-sm font-extrabold text-slate-900">{m.title}</h3>
+                      <h3 className="text-[13px] font-extrabold text-slate-900">{m.title}</h3>
+                      <span className={`text-[8px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full bg-gradient-to-r ${m.accent} text-white ml-auto`}>
+                        {m.stat}
+                      </span>
                     </div>
-                    <span className={`text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-gradient-to-r ${m.accent} text-white`}>
-                      {m.stat}
-                    </span>
+                    <p className="text-[10px] text-slate-500 leading-relaxed">{m.desc}</p>
                   </div>
-                  <p className="text-[11px] text-slate-500 leading-relaxed">{m.desc}</p>
                 </div>
               </motion.div>
             ))}
-
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-              className="flex items-center gap-4 mt-1 px-1"
-            >
-              <div className="flex items-center gap-2">
-                <Zap size={14} className="text-smart-600" />
-                <span className="text-[11px] font-bold text-slate-700">Zero saisie manuelle</span>
-              </div>
-              <div className="w-px h-4 bg-slate-200" />
-              <div className="flex items-center gap-2">
-                <ArrowRight size={14} className="text-smart-600" />
-                <span className="text-[11px] font-bold text-slate-700">Temps consult. /2</span>
-              </div>
-            </motion.div>
           </div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.96 }}
+            initial={{ opacity: 0, scale: 0.92 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="lg:w-[62%] relative flex-1 min-h-0 rounded-2xl overflow-hidden shadow-hero ring-1 ring-slate-200/50"
+            transition={{ duration: 0.9, delay: 0.1 }}
+            className="absolute inset-0 lg:inset-x-[18%] lg:top-[14%] lg:bottom-0 flex items-center justify-center"
           >
-            <img
-              src="/Gemini_Generated_Image_cgyqwecgyqwecgyq.png"
-              alt="SmartDoc Intelligence - SmartVoice, SmartScan, SmartContext"
-              className="w-full h-full object-contain bg-gradient-to-br from-slate-50 to-white"
-            />
+            <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-hero ring-1 ring-slate-200/40">
+              <img
+                src="/Gemini_Generated_Image_cgyqwecgyqwecgyq.png"
+                alt="SmartDoc Intelligence - SmartVoice, SmartScan, SmartContext"
+                className="w-full h-full object-contain"
+              />
+            </div>
           </motion.div>
+
+          <div className="lg:hidden flex flex-col gap-2 mt-3">
+            {modules.map((m, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 + i * 0.1 }}
+                className={`bg-white/90 backdrop-blur-md rounded-xl p-3 border ${m.border} shadow-card`}
+              >
+                <div className="flex items-center gap-2 mb-1">
+                  <div className={`w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 ${m.iconBg}`}>
+                    <m.icon size={14} />
+                  </div>
+                  <h3 className="text-[13px] font-extrabold text-slate-900">{m.title}</h3>
+                  <span className={`text-[8px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full bg-gradient-to-r ${m.accent} text-white ml-auto`}>
+                    {m.stat}
+                  </span>
+                </div>
+                <p className="text-[10px] text-slate-500 leading-relaxed">{m.desc}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.7 }}
+          className="flex items-center justify-center gap-6 mt-2 flex-shrink-0"
+        >
+          <div className="flex items-center gap-2">
+            <div className="w-6 h-6 rounded-full bg-smart-100 flex items-center justify-center">
+              <Zap size={12} className="text-smart-600" />
+            </div>
+            <span className="text-[11px] font-bold text-slate-700">Zero saisie manuelle</span>
+          </div>
+          <div className="w-px h-5 bg-slate-200" />
+          <div className="flex items-center gap-2">
+            <div className="w-6 h-6 rounded-full bg-cyan-100 flex items-center justify-center">
+              <Clock size={12} className="text-cyan-600" />
+            </div>
+            <span className="text-[11px] font-bold text-slate-700">Temps de consultation divise par 2</span>
+          </div>
+          <div className="w-px h-5 bg-slate-200" />
+          <div className="flex items-center gap-2">
+            <div className="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center">
+              <ShieldCheck size={12} className="text-emerald-600" />
+            </div>
+            <span className="text-[11px] font-bold text-slate-700">Securite patient renforcee</span>
+          </div>
+        </motion.div>
       </div>
     </div>
   );
