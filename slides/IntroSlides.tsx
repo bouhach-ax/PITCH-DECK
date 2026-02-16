@@ -156,43 +156,73 @@ export const SummarySlide = () => {
 
 export const ProblemSlide = () => {
   const fractures = [
-    { title: 'Fracture Technologique & Cognitive', icon: AlertTriangle, color: 'bg-red-50 border-red-200 hover:border-red-300', iconBg: 'bg-red-100 text-red-600', text: 'Le médecin utilise des logiciels Desktop figés dans les années 2000. Passivité totale, surcharge cognitive et déconnexion des standards modernes (IA, Cloud, API).' },
-    { title: 'Fracture Clinique & Sécuritaire', icon: ShieldCheck, color: 'bg-amber-50 border-amber-200 hover:border-amber-300', iconBg: 'bg-amber-100 text-amber-600', text: 'Données non structurées, absence de filet de sécurité pour les prescriptions (DCI/Interactions), et perte d\'information sur les examens externes.' },
-    { title: 'Fracture Organisationnelle', icon: DollarSign, color: 'bg-orange-50 border-orange-200 hover:border-orange-300', iconBg: 'bg-orange-100 text-orange-600', text: 'Processus morcelés, fuite de revenus estimée à 15-20% (RDV manqués, impayés), et temps administratif gâché sans valeur ajoutée.' },
+    {
+      title: 'Fracture Technologique',
+      icon: AlertTriangle,
+      accent: 'bg-red-500',
+      iconBg: 'bg-red-500/20 text-red-100',
+      text: 'Logiciels Desktop figes dans les annees 2000. Passivite totale, surcharge cognitive et deconnexion des standards modernes.',
+    },
+    {
+      title: 'Fracture Clinique',
+      icon: ShieldCheck,
+      accent: 'bg-amber-500',
+      iconBg: 'bg-amber-500/20 text-amber-100',
+      text: 'Donnees non structurees, absence de filet de securite pour les prescriptions (DCI/Interactions), perte d\'information critique.',
+    },
+    {
+      title: 'Fracture Organisationnelle',
+      icon: DollarSign,
+      accent: 'bg-orange-500',
+      iconBg: 'bg-orange-500/20 text-orange-100',
+      text: 'Processus morceles, fuite de revenus de 15-20% (RDV manques, impayes), temps administratif sans valeur ajoutee.',
+    },
   ];
 
   return (
     <Slide>
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-red-100/40 rounded-full blur-[120px] pointer-events-none translate-y-1/3 -translate-x-1/4" />
       <SlideHeader
-        label="La Réalité du Médecin-Entrepreneur"
-        title="Le Problème"
-        subtitle={<>Le médecin marocain moderne fait face à une <span className="text-red-500 font-bold">triple fracture</span> :</>}
+        label="La Realite du Medecin-Entrepreneur"
+        title="Le Probleme"
+        subtitle={<>Le medecin marocain moderne fait face a une <span className="text-red-500 font-bold">triple fracture</span> :</>}
       />
 
-      <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 flex-1 min-h-0">
-        <div className="lg:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
-          {fractures.map((f, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 + i * 0.12 }}
-              className={`rounded-2xl p-4 md:p-5 flex flex-col h-full border-2 transition-all shadow-card ${f.color}`}
-            >
-              <div className={`w-11 h-11 md:w-12 md:h-12 rounded-xl flex items-center justify-center mb-3 flex-shrink-0 ${f.iconBg}`}>
-                <f.icon size={20} />
-              </div>
-              <h3 className="text-sm md:text-base font-bold text-slate-800 mb-2">{f.title}</h3>
-              <p className="text-xs md:text-sm text-slate-500 leading-relaxed flex-1">{f.text}</p>
-            </motion.div>
-          ))}
-        </div>
-        <SlideImage
-          src="https://images.pexels.com/photos/5726794/pexels-photo-5726794.jpeg?auto=compress&cs=tinysrgb&w=800"
-          alt="Médecin face aux défis"
-          className="hidden lg:block lg:col-span-2 h-full"
+      <div className="relative flex-1 min-h-0 rounded-3xl overflow-hidden shadow-hero">
+        <motion.img
+          initial={{ opacity: 0, scale: 1.05 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8 }}
+          src="/Gemini_Generated_Image_493qms493qms493q.jpeg"
+          alt="Triple fracture du medecin"
+          className="absolute inset-0 w-full h-full object-cover"
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/10" />
+
+        <div className="relative z-10 h-full flex flex-col justify-end p-4 md:p-6">
+          <div className="grid grid-cols-3 gap-3 md:gap-4">
+            {fractures.map((f, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 + i * 0.15, duration: 0.5 }}
+                className="backdrop-blur-xl bg-white/10 rounded-2xl border border-white/15 overflow-hidden transition-all duration-300 hover:bg-white/15 hover:border-white/25"
+              >
+                <div className={`h-1 w-full ${f.accent}`} />
+                <div className="p-3 md:p-4">
+                  <div className="flex items-center gap-2.5 mb-2">
+                    <div className={`w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 ${f.iconBg}`}>
+                      <f.icon size={18} />
+                    </div>
+                    <h3 className="text-sm md:text-base font-bold text-white leading-tight">{f.title}</h3>
+                  </div>
+                  <p className="text-xs md:text-sm text-white/70 leading-relaxed">{f.text}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
       </div>
     </Slide>
   );
