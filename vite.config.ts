@@ -18,6 +18,13 @@ export default defineConfig(({ mode }) => {
         alias: {
           '@': path.resolve(__dirname, '.'),
         }
+      },
+      publicDir: 'public',
+      build: {
+        copyPublicDir: true,
+        rollupOptions: {
+          external: [],
+        }
       }
     };
 });

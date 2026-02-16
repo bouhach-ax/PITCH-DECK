@@ -100,8 +100,8 @@ export const SummarySlide = () => (
         </GlassCard>
       </div>
       <SlideImage
-        src="https://images.pexels.com/photos/4386467/pexels-photo-4386467.jpeg?auto=compress&cs=tinysrgb&w=800"
-        alt="Technologie médicale moderne"
+        src="/Gemini_Generated_Image_myammomyammomyam.jpeg"
+        alt="SmartDoc - Avant et Après"
         className="hidden lg:block h-full"
       />
     </div>
