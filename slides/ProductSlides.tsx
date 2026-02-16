@@ -194,7 +194,7 @@ export const PillarThreeSlide = () => {
   return (
     <div className="relative w-full h-full overflow-hidden bg-mesh">
       <motion.div
-        className="hidden lg:block absolute top-[8%] right-[-4%] w-[52%] h-[84%] rounded-3xl overflow-hidden ring-1 ring-slate-200/50 shadow-hero"
+        className="hidden lg:block absolute top-[8%] right-[2%] w-[52%] h-[84%] rounded-3xl overflow-hidden ring-1 ring-slate-200/50 shadow-hero"
         initial={{ opacity: 0, x: 50, scale: 0.96 }}
         animate={{ opacity: 1, x: 0, scale: 1 }}
         transition={{ duration: 0.9, ease: 'easeOut' }}
@@ -202,7 +202,7 @@ export const PillarThreeSlide = () => {
         <img
           src="/Gemini_Generated_Image_z9gt3z9gt3z9gt3z.png"
           alt="SmartDoc Automatisation Administrative"
-          className="w-full h-full object-cover object-center"
+          className="w-full h-full object-contain bg-white"
         />
         <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-white/70" />
       </motion.div>
@@ -238,7 +238,7 @@ export const PillarThreeSlide = () => {
                 className="bg-white rounded-2xl p-4 md:p-5 border border-slate-200/80 shadow-card hover:shadow-card-hover transition-all"
               >
                 <div className="flex items-center gap-3 mb-2.5">
-                  <div className="w-10 h-10 rounded-xl bg-smart-50 flex items-center justify-center text-smart-600">
+                  <div className="w-10 h-10 rounded-xl bg-teal-50 flex items-center justify-center text-teal-600">
                     <Printer size={18} />
                   </div>
                   <h3 className="text-sm md:text-base font-bold text-slate-800">Feuilles de Soins</h3>
@@ -253,7 +253,7 @@ export const PillarThreeSlide = () => {
                       initial={{ opacity: 0, scale: 0.9 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: 0.4 + i * 0.06 }}
-                      className="px-2.5 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider bg-smart-50 text-smart-600 border border-smart-200"
+                      className="px-2.5 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider bg-teal-50 text-teal-600 border border-teal-200"
                     >
                       {tag}
                     </motion.span>
@@ -268,7 +268,7 @@ export const PillarThreeSlide = () => {
                 className="bg-white rounded-2xl p-4 md:p-5 border border-slate-200/80 shadow-card hover:shadow-card-hover transition-all"
               >
                 <div className="flex items-center gap-3 mb-2.5">
-                  <div className="w-10 h-10 rounded-xl bg-teal-50 flex items-center justify-center text-teal-600">
+                  <div className="w-10 h-10 rounded-xl bg-smart-50 flex items-center justify-center text-smart-600">
                     <FileText size={18} />
                   </div>
                   <h3 className="text-sm md:text-base font-bold text-slate-800">Certificats & Courriers</h3>
@@ -283,7 +283,7 @@ export const PillarThreeSlide = () => {
                       initial={{ opacity: 0, scale: 0.9 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: 0.5 + i * 0.06 }}
-                      className="px-2.5 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider bg-teal-50 text-teal-600 border border-teal-200"
+                      className="px-2.5 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider bg-smart-50 text-smart-600 border border-smart-200"
                     >
                       {tag}
                     </motion.span>
