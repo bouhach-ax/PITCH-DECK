@@ -7,43 +7,69 @@ import {
 } from 'lucide-react';
 import { Slide, DarkSlide, SlideHeader, WhiteSlideHeader, GlassCard, SlideImage } from '../components/SlideComponents';
 
-export const PillarOneSlide = () => (
-  <Slide>
-    <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-smart-100/60 rounded-full blur-[120px] pointer-events-none -translate-y-1/4 -translate-x-1/4" />
-    <SlideHeader
-      label="Le Socle Business"
-      title="Pilier 1 : L'Administration & La Gestion"
-      subtitle="C'est ce qui fait tourner le cabinet au quotidien."
-    />
-    <div className="grid grid-cols-1 lg:grid-cols-4 gap-3 flex-1 min-h-0">
-      <div className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-        <GlassCard title="Gestion Avancée des RDV" icon={Calendar} index={0}>
-          Agenda multi-vues, gestion des urgences, listes d'attente intelligentes.
-        </GlassCard>
-        <GlassCard title="Système Anti-Absentéisme" icon={CheckCircle} index={1}>
-          Envoi automatique de rappels (SMS/WhatsApp) 24h/48h avant. Réduction drastique des "No-Shows".
-        </GlassCard>
-        <GlassCard title="Salle d'Attente Digitale" icon={Users} index={2}>
-          Suivi en temps réel des patients présents, chrono d'attente pour optimiser le flux.
-        </GlassCard>
-        <GlassCard title="Pilotage Financier" icon={CreditCard} highlight index={3}>
-          Module de Facturation complet, suivi des encaissements (Espèces/Chèque/Virement), gestion des impayés et Tableau de Bord de Chiffre d'Affaires sécurisé.
-        </GlassCard>
-        <GlassCard title="Gestion des Rôles" icon={ShieldCheck} index={4}>
-          Interface dédiée "Assistante" (Accueil/RDV) avec cloisonnement strict des données médicales et financières sensibles.
-        </GlassCard>
-        <GlassCard title="Rapports & Analytics" icon={BarChart3} index={5}>
-          Tableaux de bord en temps réel pour suivre les performances du cabinet et optimiser la prise de décision.
-        </GlassCard>
-      </div>
-      <SlideImage
-        src="https://images.pexels.com/photos/7578803/pexels-photo-7578803.jpeg?auto=compress&cs=tinysrgb&w=800"
-        alt="Gestion cabinet médical"
-        className="hidden lg:block h-full"
+export const PillarOneSlide = () => {
+  const features = [
+    { icon: Calendar, title: 'Gestion Avancee des RDV', text: 'Agenda multi-vues, urgences et listes d\'attente intelligentes.' },
+    { icon: CheckCircle, title: 'Systeme Anti-Absenteisme', text: 'Rappels automatiques SMS/WhatsApp 24h/48h avant chaque RDV.' },
+    { icon: Users, title: 'Salle d\'Attente Digitale', text: 'Suivi temps reel des patients, chrono d\'attente optimise.' },
+    { icon: CreditCard, title: 'Pilotage Financier', text: 'Facturation, encaissements, impayes et tableau de bord CA.', highlight: true },
+    { icon: ShieldCheck, title: 'Gestion des Roles', text: 'Interface Assistante avec cloisonnement strict des donnees.' },
+    { icon: BarChart3, title: 'Rapports & Analytics', text: 'Tableaux de bord performances en temps reel.' },
+  ];
+
+  return (
+    <Slide>
+      <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-smart-100/60 rounded-full blur-[120px] pointer-events-none -translate-y-1/4 -translate-x-1/4" />
+      <SlideHeader
+        label="Le Socle Business"
+        title="Pilier 1 : L'Administration & La Gestion"
+        subtitle="C'est ce qui fait tourner le cabinet au quotidien."
       />
-    </div>
-  </Slide>
-);
+
+      <div className="relative flex-1 min-h-0 rounded-3xl overflow-hidden shadow-hero">
+        <motion.img
+          initial={{ opacity: 0, scale: 1.05 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8 }}
+          src="/Gemini_Generated_Image_6t0uc06t0uc06t0u.png"
+          alt="SmartDoc Administration & Gestion"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/30 to-transparent" />
+
+        <div className="relative z-10 h-full flex flex-col justify-end p-4 md:p-6">
+          <div className="grid grid-cols-3 gap-2.5 md:gap-3">
+            {features.map((f, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 25 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.25 + i * 0.1, duration: 0.5 }}
+                className={`backdrop-blur-xl rounded-xl border overflow-hidden transition-all duration-300 ${
+                  f.highlight
+                    ? 'bg-smart-600/40 border-smart-400/30 hover:bg-smart-600/50'
+                    : 'bg-white/10 border-white/15 hover:bg-white/15 hover:border-white/25'
+                }`}
+              >
+                <div className="p-3 md:p-3.5">
+                  <div className="flex items-center gap-2 mb-1.5">
+                    <div className={`w-7 h-7 md:w-8 md:h-8 rounded-lg flex items-center justify-center flex-shrink-0 ${
+                      f.highlight ? 'bg-smart-400/30 text-smart-200' : 'bg-white/15 text-white/80'
+                    }`}>
+                      <f.icon size={15} />
+                    </div>
+                    <h3 className="text-xs md:text-sm font-bold text-white leading-tight">{f.title}</h3>
+                  </div>
+                  <p className="text-[10px] md:text-xs text-white/60 leading-relaxed">{f.text}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </Slide>
+  );
+};
 
 export const PillarTwoSlide = () => {
   const items = [
