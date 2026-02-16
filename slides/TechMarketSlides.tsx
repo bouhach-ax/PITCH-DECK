@@ -38,8 +38,8 @@ export const TechSlide = () => (
             <div className={`p-2 rounded-xl w-fit mb-3 ${f.highlight ? 'bg-smart-400/20 text-smart-300' : 'bg-white/10 text-white/60'}`}>
               <f.icon size={18} />
             </div>
-            <h3 className={`text-sm md:text-base font-bold mb-1.5 ${f.highlight ? 'text-white' : 'text-white/90'}`}>{f.title}</h3>
-            <p className={`text-xs md:text-sm leading-relaxed flex-1 ${f.highlight ? 'text-white/70' : 'text-white/45'}`}>{f.text}</p>
+            <h3 className={`text-xs md:text-sm font-bold mb-1 ${f.highlight ? 'text-white' : 'text-white/90'}`}>{f.title}</h3>
+            <p className={`text-[11px] md:text-xs leading-relaxed flex-1 ${f.highlight ? 'text-white/70' : 'text-white/45'}`}>{f.text}</p>
           </motion.div>
         ))}
       </div>
@@ -72,8 +72,8 @@ export const MarketSlide = () => (
             </div>
             <h3 className="text-base md:text-lg font-bold">Total Addressable Market</h3>
           </div>
-          <p className="text-3xl md:text-4xl font-black mb-1 relative z-10">~28,000</p>
-          <p className="text-white/70 text-sm mb-3 relative z-10">Médecins au Maroc (Secteur Privé)</p>
+          <p className="text-2xl md:text-3xl font-black mb-1 relative z-10">~28,000</p>
+          <p className="text-white/70 text-xs md:text-sm mb-3 relative z-10">Médecins au Maroc (Secteur Privé)</p>
           <div className="grid grid-cols-2 gap-3 pt-3 border-t border-white/15 relative z-10">
             <div>
               <p className="text-xl md:text-2xl font-extrabold">12K</p>
@@ -98,7 +98,7 @@ export const MarketSlide = () => (
             </div>
             <h3 className="text-sm md:text-base font-bold text-slate-800">Coeur de Cible</h3>
           </div>
-          <p className="text-sm text-slate-500 leading-relaxed">
+          <p className="text-xs md:text-sm text-slate-500 leading-relaxed">
             Médecins installés en cabinet de groupe ou individuel à fort volume (20+ patients/jour), cherchant à optimiser leur temps administratif et sécuriser leur pratique.
           </p>
         </motion.div>
@@ -115,7 +115,7 @@ export const MarketSlide = () => (
             </div>
             <h3 className="text-sm md:text-base font-bold text-slate-800">Tendance de Fond</h3>
           </div>
-          <p className="text-sm text-slate-500 leading-relaxed">
+          <p className="text-xs md:text-sm text-slate-500 leading-relaxed">
             Généralisation de l'AMO (Assurance Maladie Obligatoire) qui impose une rigueur administrative accrue (feuilles de soins) que SmartDoc automatise entièrement.
           </p>
         </motion.div>
@@ -155,8 +155,8 @@ export const BusinessSlide = () => (
         <div className="p-2.5 rounded-xl bg-smart-50 text-smart-600 w-fit mb-4">
           <Calendar size={20} />
         </div>
-        <h3 className="text-base md:text-lg font-bold text-slate-800 mb-2">Abonnement Mensuel</h3>
-        <p className="text-sm text-slate-500 leading-relaxed flex-1 mb-4">
+        <h3 className="text-sm md:text-base font-bold text-slate-800 mb-1.5">Abonnement Mensuel</h3>
+        <p className="text-xs md:text-sm text-slate-500 leading-relaxed flex-1 mb-3">
           Un prix unique pour l'accès complet (Gestion + Clinique + Intelligence). Pas d'options cachées.
         </p>
         <div className="text-2xl md:text-3xl font-extrabold text-slate-900">
@@ -177,8 +177,8 @@ export const BusinessSlide = () => (
         <div className="p-2.5 rounded-xl bg-white/20 text-white w-fit mb-4 relative z-10">
           <Award size={20} />
         </div>
-        <h3 className="text-base md:text-lg font-bold text-white mb-2 relative z-10">Abonnement Annuel</h3>
-        <p className="text-sm text-white/70 leading-relaxed flex-1 mb-4 relative z-10">
+        <h3 className="text-sm md:text-base font-bold text-white mb-1.5 relative z-10">Abonnement Annuel</h3>
+        <p className="text-xs md:text-sm text-white/70 leading-relaxed flex-1 mb-3 relative z-10">
           Paiement upfront (trésorerie immédiate) avec incitation (2 mois offerts).
         </p>
         <div className="text-2xl md:text-3xl font-extrabold text-white relative z-10">
@@ -195,8 +195,8 @@ export const BusinessSlide = () => (
         <div className="p-2.5 rounded-xl bg-smart-50 text-smart-600 w-fit mb-4">
           <Sparkles size={20} />
         </div>
-        <h3 className="text-base md:text-lg font-bold text-slate-800 mb-2">Services Additionnels</h3>
-        <p className="text-sm text-slate-500 leading-relaxed flex-1 mb-4">
+        <h3 className="text-sm md:text-base font-bold text-slate-800 mb-1.5">Services Additionnels</h3>
+        <p className="text-xs md:text-sm text-slate-500 leading-relaxed flex-1 mb-3">
           Téléconsultation intégrée, Module de comptabilité avancée exportable, SMS Marketing pour le cabinet.
         </p>
         <div className="flex items-center gap-2 text-smart-600 font-extrabold text-base md:text-lg">

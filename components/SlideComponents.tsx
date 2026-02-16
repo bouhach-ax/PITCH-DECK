@@ -2,31 +2,31 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 export const Slide = ({ children, className = '' }: React.PropsWithChildren<{ className?: string }>) => (
-  <div className={`relative w-full h-full flex flex-col px-6 sm:px-10 md:px-14 lg:px-20 pt-16 sm:pt-20 pb-16 overflow-y-auto scrollbar-hide bg-mesh ${className}`}>
+  <div className={`relative w-full h-full flex flex-col px-5 sm:px-8 md:px-12 lg:px-14 pt-12 sm:pt-14 pb-12 overflow-y-auto scrollbar-hide bg-mesh ${className}`}>
     {children}
   </div>
 );
 
 export const DarkSlide = ({ children, className = '' }: React.PropsWithChildren<{ className?: string }>) => (
-  <div className={`relative w-full h-full flex flex-col px-6 sm:px-10 md:px-14 lg:px-20 pt-16 sm:pt-20 pb-16 overflow-y-auto scrollbar-hide bg-hero ${className}`}>
+  <div className={`relative w-full h-full flex flex-col px-5 sm:px-8 md:px-12 lg:px-14 pt-12 sm:pt-14 pb-12 overflow-y-auto scrollbar-hide bg-hero ${className}`}>
     {children}
   </div>
 );
 
 export const CenteredSlide = ({ children, className = '' }: React.PropsWithChildren<{ className?: string }>) => (
-  <div className={`relative w-full h-full flex flex-col items-center justify-center px-6 sm:px-10 md:px-14 lg:px-20 pt-16 pb-16 overflow-hidden bg-mesh ${className}`}>
+  <div className={`relative w-full h-full flex flex-col items-center justify-center px-5 sm:px-8 md:px-12 lg:px-14 pt-12 pb-12 overflow-hidden bg-mesh ${className}`}>
     {children}
   </div>
 );
 
 export const CenteredDarkSlide = ({ children, className = '' }: React.PropsWithChildren<{ className?: string }>) => (
-  <div className={`relative w-full h-full flex flex-col items-center justify-center px-6 sm:px-10 md:px-14 lg:px-20 pt-16 pb-16 overflow-hidden bg-hero ${className}`}>
+  <div className={`relative w-full h-full flex flex-col items-center justify-center px-5 sm:px-8 md:px-12 lg:px-14 pt-12 pb-12 overflow-hidden bg-hero ${className}`}>
     {children}
   </div>
 );
 
 export const SlideHeader = ({ label, title, subtitle }: { label: string; title: React.ReactNode; subtitle?: React.ReactNode }) => (
-  <div className="mb-4 md:mb-6 flex-shrink-0">
+  <div className="mb-3 md:mb-4 flex-shrink-0">
     <motion.span
       initial={{ opacity: 0, x: -10 }}
       animate={{ opacity: 1, x: 0 }}
@@ -38,7 +38,7 @@ export const SlideHeader = ({ label, title, subtitle }: { label: string; title: 
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.05 }}
-      className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-extrabold text-slate-900 tracking-tight leading-tight"
+      className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight"
     >
       {title}
     </motion.h2>
@@ -47,7 +47,7 @@ export const SlideHeader = ({ label, title, subtitle }: { label: string; title: 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.1 }}
-        className="text-sm md:text-base lg:text-lg text-slate-500 mt-2 font-medium"
+        className="text-xs md:text-sm lg:text-base text-slate-500 mt-1.5 font-medium"
       >
         {subtitle}
       </motion.p>
@@ -56,7 +56,7 @@ export const SlideHeader = ({ label, title, subtitle }: { label: string; title: 
 );
 
 export const WhiteSlideHeader = ({ label, title, subtitle }: { label: string; title: React.ReactNode; subtitle?: React.ReactNode }) => (
-  <div className="mb-4 md:mb-6 flex-shrink-0">
+  <div className="mb-3 md:mb-4 flex-shrink-0">
     <motion.span
       initial={{ opacity: 0, x: -10 }}
       animate={{ opacity: 1, x: 0 }}
@@ -68,7 +68,7 @@ export const WhiteSlideHeader = ({ label, title, subtitle }: { label: string; ti
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.05 }}
-      className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-extrabold text-white tracking-tight leading-tight"
+      className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight"
     >
       {title}
     </motion.h2>
@@ -77,7 +77,7 @@ export const WhiteSlideHeader = ({ label, title, subtitle }: { label: string; ti
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.1 }}
-        className="text-sm md:text-base lg:text-lg text-white/60 mt-2 font-medium"
+        className="text-xs md:text-sm lg:text-base text-white/60 mt-1.5 font-medium"
       >
         {subtitle}
       </motion.p>

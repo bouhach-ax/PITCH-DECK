@@ -34,7 +34,7 @@ export const CoverSlide = () => (
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.3 }}
-        className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black text-white mb-4 md:mb-6 tracking-tight"
+        className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 md:mb-6 tracking-tight"
       >
         SmartDoc<span className="text-smart-300">.ma</span>
       </motion.h1>
@@ -43,7 +43,7 @@ export const CoverSlide = () => (
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.45 }}
-        className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white/70 font-light mb-10 md:mb-14 max-w-4xl"
+        className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/70 font-light mb-8 md:mb-10 max-w-4xl"
       >
         Le Premier Assistant Médical Augmenté du Maroc
       </motion.p>
@@ -100,7 +100,7 @@ export const SummarySlide = () => {
           transition={{ delay: 0.15, duration: 0.7 }}
           className="absolute inset-0 flex items-center justify-center z-0"
         >
-          <div className="relative w-[55%] max-w-[520px] aspect-[16/10] rounded-3xl overflow-hidden shadow-hero border-2 border-white/60">
+          <div className="relative w-[45%] max-w-[420px] aspect-[16/10] rounded-3xl overflow-hidden shadow-hero border-2 border-white/60">
             <img
               src="/Gemini_Generated_Image_myammomyammomyam.jpeg"
               alt="SmartDoc - Avant et Apres"
@@ -121,28 +121,28 @@ export const SummarySlide = () => {
               className={`flex ${i < 2 ? 'items-start' : 'items-end'} ${i % 2 === 0 ? 'justify-start' : 'justify-end'}`}
             >
               <div
-                className={`max-w-[280px] rounded-2xl p-4 backdrop-blur-xl border transition-all duration-300 ${
+                className={`max-w-[250px] rounded-xl p-3 backdrop-blur-xl border transition-all duration-300 ${
                   card.highlight
                     ? 'bg-smart-600/95 border-smart-400/50 shadow-hero'
                     : 'bg-white/90 border-slate-200/80 shadow-card hover:shadow-card-hover hover:border-smart-200'
                 }`}
               >
-                <div className="flex items-center gap-2.5 mb-2">
-                  <div className={`p-1.5 rounded-lg flex-shrink-0 ${
+                <div className="flex items-center gap-2 mb-1.5">
+                  <div className={`p-1 rounded-lg flex-shrink-0 ${
                     card.highlight ? 'bg-white/20 text-white' : 'bg-smart-50 text-smart-600'
                   }`}>
-                    <card.icon size={16} />
+                    <card.icon size={14} />
                   </div>
                   <div>
-                    <h3 className={`text-sm font-bold leading-tight ${card.highlight ? 'text-white' : 'text-slate-800'}`}>
+                    <h3 className={`text-xs font-bold leading-tight ${card.highlight ? 'text-white' : 'text-slate-800'}`}>
                       {card.title}
                     </h3>
-                    <span className={`text-[10px] font-semibold uppercase tracking-wider ${card.highlight ? 'text-white/70' : 'text-smart-500'}`}>
+                    <span className={`text-[9px] font-semibold uppercase tracking-wider ${card.highlight ? 'text-white/70' : 'text-smart-500'}`}>
                       {card.subtitle}
                     </span>
                   </div>
                 </div>
-                <p className={`text-xs leading-relaxed ${card.highlight ? 'text-white/85' : 'text-slate-500'}`}>
+                <p className={`text-[11px] leading-relaxed ${card.highlight ? 'text-white/85' : 'text-slate-500'}`}>
                   {card.text}
                 </p>
               </div>
@@ -200,7 +200,7 @@ export const ProblemSlide = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/10" />
 
         <div className="relative z-10 h-full flex flex-col justify-end p-4 md:p-6">
-          <div className="grid grid-cols-3 gap-3 md:gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-3">
             {fractures.map((f, i) => (
               <motion.div
                 key={i}

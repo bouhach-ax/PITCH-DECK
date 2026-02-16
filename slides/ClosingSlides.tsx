@@ -38,10 +38,10 @@ export const RoadmapSlide = () => {
                   ? 'bg-gradient-to-br from-smart-50 to-smart-100/50 border-2 border-smart-300 shadow-card'
                   : 'bg-white border border-slate-200/80 shadow-card'
               }`}>
-                <h3 className={`text-base md:text-lg font-bold mb-1.5 ${m.active ? 'text-smart-700' : 'text-slate-700'}`}>
+                <h3 className={`text-sm md:text-base font-bold mb-1 ${m.active ? 'text-smart-700' : 'text-slate-700'}`}>
                   {m.title}
                 </h3>
-                <p className={`text-sm leading-relaxed ${m.active ? 'text-smart-800/70' : 'text-slate-500'}`}>
+                <p className={`text-xs md:text-sm leading-relaxed ${m.active ? 'text-smart-800/70' : 'text-slate-500'}`}>
                   {m.text}
                 </p>
               </div>
@@ -79,8 +79,8 @@ export const TeamSlide = () => (
             <Server className="text-white w-8 h-8 md:w-9 md:h-9" />
           </div>
           <div className="text-center sm:text-left">
-            <h4 className="font-extrabold text-slate-800 text-base md:text-lg mb-1">Expertise Technique</h4>
-            <p className="text-slate-500 text-sm leading-relaxed">
+            <h4 className="font-extrabold text-slate-800 text-sm md:text-base mb-1">Expertise Technique</h4>
+            <p className="text-slate-500 text-xs md:text-sm leading-relaxed">
               Maîtrise des architectures Cloud, Sécurité des données de santé et Développement IA.
             </p>
           </div>
@@ -96,8 +96,8 @@ export const TeamSlide = () => (
             <Stethoscope className="text-white w-8 h-8 md:w-9 md:h-9" />
           </div>
           <div className="text-center sm:text-left">
-            <h4 className="font-extrabold text-slate-800 text-base md:text-lg mb-1">Connaissance Métier</h4>
-            <p className="text-slate-500 text-sm leading-relaxed">
+            <h4 className="font-extrabold text-slate-800 text-sm md:text-base mb-1">Connaissance Métier</h4>
+            <p className="text-slate-500 text-xs md:text-sm leading-relaxed">
               Collaboration étroite avec des médecins partenaires pour définir les flux de travail (UX/UI) et valider la pertinence clinique des fonctionnalités.
             </p>
           </div>
@@ -129,7 +129,7 @@ export const ConclusionSlide = () => (
       initial={{ y: 15, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ delay: 0.1 }}
-      className="text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-6 md:mb-8 tracking-tight"
+      className="text-2xl md:text-3xl lg:text-4xl font-black text-slate-900 mb-5 md:mb-6 tracking-tight"
     >
       CONCLUSION
     </motion.h2>
@@ -140,13 +140,13 @@ export const ConclusionSlide = () => (
       transition={{ delay: 0.2 }}
       className="max-w-3xl text-center relative z-10"
     >
-      <p className="text-base md:text-lg lg:text-xl text-slate-400 font-light mb-4">
+      <p className="text-sm md:text-base lg:text-lg text-slate-400 font-light mb-3">
         SmartDoc n'est pas une simple "aide à la saisie".
       </p>
-      <p className="text-base md:text-lg lg:text-xl mb-4">
+      <p className="text-sm md:text-base lg:text-lg mb-3">
         C'est la <span className="font-extrabold gradient-text">colonne vertébrale numérique</span> du cabinet médical moderne.
       </p>
-      <p className="text-sm md:text-base lg:text-lg text-slate-500 leading-relaxed font-medium">
+      <p className="text-xs md:text-sm lg:text-base text-slate-500 leading-relaxed font-medium">
         Nous apportons la structure, la sécurité et l'intelligence qui manquent aujourd'hui aux médecins pour faire face à l'augmentation de leur charge de travail et aux exigences de leurs patients.
       </p>
     </motion.div>
@@ -162,7 +162,7 @@ export const InvestmentSlide = () => (
       animate={{ y: 0, opacity: 1 }}
       className="mb-5 md:mb-6 text-center relative z-10"
     >
-      <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-2 tracking-tight">Investissement</h2>
+      <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-white mb-2 tracking-tight">Investissement</h2>
       <p className="text-sm md:text-base text-smart-300 font-semibold">Seed Round</p>
     </motion.div>
 
@@ -173,7 +173,7 @@ export const InvestmentSlide = () => (
       className="relative mb-8 md:mb-10 z-10"
     >
       <div className="absolute inset-0 bg-smart-400/25 blur-[50px] rounded-full" />
-      <div className="relative text-5xl md:text-7xl lg:text-[100px] font-black text-transparent bg-clip-text bg-gradient-to-r from-smart-300 to-smart-200 leading-none">
+      <div className="relative text-4xl md:text-6xl lg:text-[80px] font-black text-transparent bg-clip-text bg-gradient-to-r from-smart-300 to-smart-200 leading-none">
         3.5 MDH
       </div>
     </motion.div>
