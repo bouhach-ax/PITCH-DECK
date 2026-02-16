@@ -9,12 +9,12 @@ import { Slide, DarkSlide, SlideHeader, WhiteSlideHeader, GlassCard, SlideImage 
 
 export const PillarOneSlide = () => {
   const features = [
-    { icon: Calendar, title: 'Gestion Avancee des RDV', text: 'Agenda multi-vues, urgences et listes d\'attente intelligentes.' },
-    { icon: CheckCircle, title: 'Systeme Anti-Absenteisme', text: 'Rappels automatiques SMS/WhatsApp 24h/48h avant chaque RDV.' },
-    { icon: Users, title: 'Salle d\'Attente Digitale', text: 'Suivi temps reel des patients, chrono d\'attente optimise.' },
-    { icon: CreditCard, title: 'Pilotage Financier', text: 'Facturation, encaissements, impayes et tableau de bord CA.', highlight: true },
-    { icon: ShieldCheck, title: 'Gestion des Roles', text: 'Interface Assistante avec cloisonnement strict des donnees.' },
-    { icon: BarChart3, title: 'Rapports & Analytics', text: 'Tableaux de bord performances en temps reel.' },
+    { icon: Calendar, title: 'Gestion des RDV', color: 'bg-smart-50 text-smart-600 border-smart-200' },
+    { icon: CheckCircle, title: 'Anti-Absenteisme', color: 'bg-emerald-50 text-emerald-600 border-emerald-200' },
+    { icon: Users, title: 'Salle d\'Attente', color: 'bg-cyan-50 text-cyan-600 border-cyan-200' },
+    { icon: CreditCard, title: 'Pilotage Financier', color: 'bg-smart-600 text-white border-smart-600', highlight: true },
+    { icon: ShieldCheck, title: 'Gestion des Roles', color: 'bg-slate-50 text-slate-600 border-slate-200' },
+    { icon: BarChart3, title: 'Rapports & Analytics', color: 'bg-teal-50 text-teal-600 border-teal-200' },
   ];
 
   return (
@@ -26,46 +26,32 @@ export const PillarOneSlide = () => {
         subtitle="C'est ce qui fait tourner le cabinet au quotidien."
       />
 
-      <div className="relative flex-1 min-h-0 rounded-3xl overflow-hidden shadow-hero">
-        <motion.img
-          initial={{ opacity: 0, scale: 1.05 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8 }}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.97 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.7 }}
+        className="relative flex-1 min-h-0 rounded-3xl overflow-hidden shadow-hero ring-1 ring-slate-200/60"
+      >
+        <img
           src="/Gemini_Generated_Image_6t0uc06t0uc06t0u.png"
-          alt="SmartDoc Administration & Gestion"
-          className="absolute inset-0 w-full h-full object-cover"
+          alt="SmartDoc Administration & Gestion - 6 modules"
+          className="w-full h-full object-contain bg-gradient-to-br from-slate-50 to-smart-50/30"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/30 to-transparent" />
+      </motion.div>
 
-        <div className="relative z-10 h-full flex flex-col justify-end p-4 md:p-6">
-          <div className="grid grid-cols-3 gap-2.5 md:gap-3">
-            {features.map((f, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 25 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.25 + i * 0.1, duration: 0.5 }}
-                className={`backdrop-blur-xl rounded-xl border overflow-hidden transition-all duration-300 ${
-                  f.highlight
-                    ? 'bg-smart-600/40 border-smart-400/30 hover:bg-smart-600/50'
-                    : 'bg-white/10 border-white/15 hover:bg-white/15 hover:border-white/25'
-                }`}
-              >
-                <div className="p-3 md:p-3.5">
-                  <div className="flex items-center gap-2 mb-1.5">
-                    <div className={`w-7 h-7 md:w-8 md:h-8 rounded-lg flex items-center justify-center flex-shrink-0 ${
-                      f.highlight ? 'bg-smart-400/30 text-smart-200' : 'bg-white/15 text-white/80'
-                    }`}>
-                      <f.icon size={15} />
-                    </div>
-                    <h3 className="text-xs md:text-sm font-bold text-white leading-tight">{f.title}</h3>
-                  </div>
-                  <p className="text-[10px] md:text-xs text-white/60 leading-relaxed">{f.text}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
+      <div className="grid grid-cols-3 md:grid-cols-6 gap-2 mt-3 flex-shrink-0">
+        {features.map((f, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 + i * 0.07 }}
+            className={`flex items-center gap-2 rounded-xl px-2.5 py-2 border transition-all ${f.color}`}
+          >
+            <f.icon size={14} className="flex-shrink-0" />
+            <span className={`text-[11px] md:text-xs font-bold leading-tight ${f.highlight ? 'text-white' : ''}`}>{f.title}</span>
+          </motion.div>
+        ))}
       </div>
     </Slide>
   );
