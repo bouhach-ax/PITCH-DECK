@@ -77,79 +77,110 @@ export const PillarOneSlide = () => {
 };
 
 export const PillarTwoSlide = () => {
-  const items = [
-    { icon: FileText, title: 'Dossier Patient Structuré (Standard SOAP)', text: 'Organisation native des données en Subjectif, Objectif, Analyse, Plan. Permet une traçabilité parfaite.' },
-    { icon: Database, title: 'Base Médicale Internationale (CIM-10)', text: 'Codification automatique des diagnostics pour un suivi épidémiologique et statistique précis.' },
-    { icon: Stethoscope, title: 'Spécialisation Métier', text: 'Modules dédiés par spécialité (Roue Obstétricale Gynéco, Courbes OMS Pédiatrie, Schémas Cardio/Ophtalmo) intégrés nativement.' },
+  const leftFeatures = [
+    {
+      icon: FileText,
+      title: 'Tracabilite Parfaite',
+      sub: 'Standard SOAP',
+      text: 'Dossier patient structure nativement en Subjectif, Objectif, Analyse, Plan. Chaque consultation est documentee de facon rigoureuse et retrouvable.',
+      accent: 'bg-smart-100 text-smart-600',
+      tag: 'S  O  A  P',
+    },
+    {
+      icon: Stethoscope,
+      title: 'Modules Specialises Natifs',
+      sub: 'Multi-Specialite',
+      text: 'Cardiologie, Gynecologie, Pediatrie, Neurologie, Ophtalmologie, Orthopedie, ECG -- chaque specialite dispose de son interface dediee.',
+      accent: 'bg-teal-100 text-teal-600',
+    },
   ];
 
-  const prescriptionItems = [
-    'Base de données exhaustive des médicaments (Maroc)',
-    'Prescription par Nom Commercial ou DCI',
-    'Alerte automatique sur les dosages et formes galéniques',
-    "Modèles d'ordonnances (Templates) pour les pathologies fréquentes"
+  const rightFeatures = [
+    {
+      icon: Database,
+      title: 'Base CIM-10 Integree',
+      sub: 'Codification Auto',
+      text: 'Codification automatique des diagnostics selon le standard international. Standardisation et suivi epidemiologique precis.',
+      accent: 'bg-cyan-100 text-cyan-600',
+    },
+    {
+      icon: HeartPulse,
+      title: 'Base Medicaments Maroc',
+      sub: 'DCI / Vidal-like',
+      text: 'Prescription securisee avec alertes dosage et galenique verifiees. Base exhaustive des medicaments disponibles au Maroc.',
+      accent: 'bg-emerald-100 text-emerald-600',
+      highlight: true,
+    },
   ];
+
+  const FeatureCard = ({ f, i, align }: { f: typeof leftFeatures[0] & { highlight?: boolean }; i: number; align: 'left' | 'right' }) => (
+    <motion.div
+      initial={{ opacity: 0, x: align === 'left' ? -18 : 18 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ delay: 0.15 + i * 0.12 }}
+      className={`flex flex-col gap-2 ${align === 'left' ? 'items-end text-right' : 'items-start text-left'}`}
+    >
+      <div className={`flex items-center gap-2.5 ${align === 'left' ? 'flex-row-reverse' : ''}`}>
+        <div className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 ${f.accent}`}>
+          <f.icon size={18} />
+        </div>
+        <div>
+          <h3 className="text-[13px] md:text-sm font-bold text-slate-800 leading-tight">{f.title}</h3>
+          <span className="text-[10px] md:text-[11px] font-bold uppercase tracking-wider text-smart-500">{f.sub}</span>
+        </div>
+      </div>
+      {f.tag && (
+        <div className="flex gap-1 mt-0.5">
+          <span className={`text-[10px] font-mono font-bold tracking-[0.25em] px-2 py-0.5 rounded-md bg-smart-50 text-smart-600 border border-smart-200`}>
+            {f.tag}
+          </span>
+        </div>
+      )}
+      <p className="text-[11px] md:text-xs text-slate-500 leading-relaxed max-w-[220px]">{f.text}</p>
+      {f.highlight && (
+        <div className="flex items-center gap-1.5 mt-0.5">
+          <CheckCircle size={12} className="text-emerald-500" />
+          <span className="text-[10px] font-bold text-emerald-600">Alertes Dosage Verifiees</span>
+        </div>
+      )}
+    </motion.div>
+  );
 
   return (
     <Slide>
       <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-smart-100/50 rounded-full blur-[120px] pointer-events-none translate-y-1/3 translate-x-1/4" />
+      <div className="absolute top-0 left-0 w-[300px] h-[300px] bg-teal-100/40 rounded-full blur-[100px] pointer-events-none -translate-y-1/4 -translate-x-1/4" />
       <SlideHeader
-        label="Le Coeur Médical"
+        label="Le Coeur Medical"
         title="Pilier 2 : La Rigueur Clinique"
-        subtitle="C'est ce qui sécurise la pratique du médecin."
+        subtitle="C'est ce qui securise la pratique du medecin."
       />
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 md:gap-4 flex-1 min-h-0">
-        <div className="flex flex-col gap-3 min-h-0">
-          {items.map((item, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, x: -12 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.08 + i * 0.1 }}
-              className="bg-white rounded-2xl p-4 md:p-5 flex gap-3 border border-slate-200/80 shadow-card hover:shadow-card-hover transition-all"
-            >
-              <div className="p-2 rounded-xl bg-smart-50 text-smart-600 flex-shrink-0 h-fit">
-                <item.icon size={18} />
-              </div>
-              <div className="min-w-0">
-                <h3 className="text-sm md:text-base font-bold text-slate-800 mb-1">{item.title}</h3>
-                <p className="text-xs md:text-sm text-slate-500 leading-relaxed">{item.text}</p>
-              </div>
-            </motion.div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_2.8fr_1fr] gap-4 lg:gap-5 flex-1 min-h-0 items-center">
+        <div className="hidden lg:flex flex-col gap-8 justify-center py-2">
+          {leftFeatures.map((f, i) => (
+            <FeatureCard key={i} f={f} i={i} align="left" />
           ))}
         </div>
 
         <motion.div
-          initial={{ opacity: 0, x: 12 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.35 }}
-          className="bg-gradient-to-br from-smart-600 to-smart-700 rounded-2xl p-5 md:p-6 flex flex-col min-h-0 shadow-hero relative overflow-hidden"
+          initial={{ opacity: 0, scale: 0.97 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.7 }}
+          className="relative h-full min-h-0 rounded-2xl overflow-hidden shadow-hero ring-1 ring-slate-200/60"
         >
-          <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full blur-[60px]" />
-          <div className="flex items-center gap-3 mb-1 relative z-10">
-            <div className="p-2 rounded-xl bg-white/20 text-white">
-              <HeartPulse size={20} />
-            </div>
-            <div>
-              <h3 className="text-base md:text-lg font-bold text-white">Prescription Sécurisée</h3>
-              <p className="text-[10px] md:text-xs text-smart-200 uppercase tracking-wider font-bold">DCI & Vidal-like</p>
-            </div>
-          </div>
-          <ul className="space-y-2.5 mt-4 flex-1 relative z-10">
-            {prescriptionItems.map((item, i) => (
-              <motion.li
-                key={i}
-                initial={{ opacity: 0, x: -8 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.4 + i * 0.08 }}
-                className="flex gap-3 items-start"
-              >
-                <CheckCircle size={16} className="text-smart-200 flex-shrink-0 mt-0.5" />
-                <span className="text-sm text-white/85 leading-relaxed">{item}</span>
-              </motion.li>
-            ))}
-          </ul>
+          <img
+            src="/Gemini_Generated_Image_z9gt3z9gt3z9gt3z.png"
+            alt="SmartDoc Rigueur Clinique - Le Coeur Medical"
+            className="w-full h-full object-contain"
+          />
         </motion.div>
+
+        <div className="hidden lg:flex flex-col gap-8 justify-center py-2">
+          {rightFeatures.map((f, i) => (
+            <FeatureCard key={i} f={f} i={i + 2} align="right" />
+          ))}
+        </div>
       </div>
     </Slide>
   );
